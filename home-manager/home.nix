@@ -16,6 +16,7 @@ in
 {
   imports = [
     ./hyprland
+    ./hyprpaper
   ];
   
   home.username = "maplespace";
