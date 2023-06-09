@@ -1,5 +1,10 @@
+{lib, pkgs, ...}:
+let
+  laptop_screen = "eDP-1";
+in
+''
 # See https://wiki.hyprland.org/Configuring/Monitors/
-monitor=,preferred,auto,1.25
+monitor=${laptop_screen},preferred,auto,1.25
 
 
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
@@ -105,12 +110,12 @@ $mainMod = SUPER
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = $mainMod, Return, exec, kitty
-bind = $mainMod, E, exec, dolphin
+bind = $mainMod, E, exec, thunar
 bind = SUPERALT, F, exec, firefox-developer-edition
 bind = SUPERALT, B, exec, brave
 bind = $mainMod, R, exec, wofi --show drun
 bind = SUPERSHIFT, R, exec, wofi --show run
-bind = SUPERALT, C, exec, webcord
+bind = SUPERALT, C, exec, discord-canary
 
 # Color picker
 bind = SUPERCTRL, P, exec, hyprpicker
@@ -189,3 +194,4 @@ bindl = ,switch:Lid Switch, exec,swaylock && systemctl suspend
 
 # For screensharing
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+''

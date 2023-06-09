@@ -3,18 +3,11 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-  let 
-  flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-
-  hyprland = (import flake-compat {
-    src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-  }).defaultNix;
-in {
+{
 
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      hyprland.nixosModules.default
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -96,6 +89,15 @@ in {
       fish
       ranger
       hyprland
+      hyprpaper
+      hyprpicker
+      exa
+      bat
+      ripgrep
+      git
+      lolcat
+      fortune
+      cowsay
     ];
   };
 
@@ -124,13 +126,6 @@ in {
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.sshd.enable = true;
@@ -155,4 +150,3 @@ in {
   system.stateVersion = "22.11"; # Did you read the comment?
 
 }
-
