@@ -37,10 +37,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-
-  
+  services.xserver.enable = true;
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -49,6 +46,28 @@
   #   "caps:escape" # map caps to escape.
   # };
 
+  # Enable SDDM
+  services.xserver.displayManager.sddm.enable = true;
+
+  # Enable GVFS
+  services.gvfs.enable = true;
+
+  # Enable Tumbler
+  services.tumbler.enable = true;
+
+  # Enable dconf
+  programs.dconf.enable = true;
+
+  # Enable dbus services
+  services.dbus.packages = with pkgs; [
+    xfce.xfconf
+  ];
+
+  # Enable Fish
+  programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish;
+  environment.shells = with pkgs; [ fish ];
+  
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -67,7 +86,19 @@
   jack.enable = true;
   };
 
+  # Enable hyprland
   programs.hyprland.enable = true;
+
+  # Enable Swaylock
+  security.pam.services.swaylock = {};
+  security.pam.services.swaylock-effects = {};
+
+  # Enable Steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
   
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
@@ -77,27 +108,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      firefox
-      hyprland
-      wayland
-      krita
-      kalzium
-      openssh
-      librewolf
-      brave
-      kitty
-      fish
-      ranger
-      hyprland
-      hyprpaper
-      hyprpicker
-      exa
-      bat
-      ripgrep
-      git
-      lolcat
-      fortune
-      cowsay
+    
     ];
   };
 
@@ -116,19 +127,39 @@
   # Editor
   environment.variables.EDITOR = "nvim";
 
-  programs.fish.enable = true;
-  users.defaultUserShell = pkgs.fish;
-  environment.shells = with pkgs; [ fish ];
-
-  
-
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.sshd.enable = true;
+
+  # Fonts
+  fonts = {
+    fonts = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      font-awesome
+      source-han-sans
+      source-han-sans-japanese
+      source-han-serif-japanese
+      source-code-pro
+      nerdfonts
+      fira
+      fira-mono
+      fira-code
+      cascadia-code
+      comic-relief
+      comfortaa
+    ];
+    fontconfig.defaultFonts = {
+      serif = [ "Cascadia Code" "Source Han Serif" ];
+      sansSerif = [ "Quicksand" "Source Han Sans" ];
+      monospace = ["Cascadia Mono" "Fira Code" ];
+    };
+  };
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

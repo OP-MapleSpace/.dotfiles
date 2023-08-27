@@ -3,7 +3,14 @@
 {
   imports = [
     ./packages.nix
+    ./fish
+    #./eww
+    ./gammastep
     ./hyprland
+    ./steam
+    #./swaylock
+    ./swayidle
+    ./starship
   ];
   
   home.username = "maplespace";
@@ -26,10 +33,12 @@
     };
   };
 
+  xdg.configFile."nvim/init.lua".source = ./neovim-lua/init.lua;
+  xdg.configFile."eww/eww.yuck".source = ./eww/eww.yuck;
+  xdg.configFile."eww/eww.scss".source = ./eww/eww.scss;
 
   # You can update Home Manager without changing this value
   home.stateVersion = "22.11";
 
   programs.home-manager.enable = true;
-
 }

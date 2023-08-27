@@ -10,7 +10,9 @@ monitor=${laptop_screen},preferred,auto,1.25
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
 # Execute your favorite apps and scripts at launch
-exec-once = waybar & hyprpaper & firefox-developer-edition
+env = XCURSOR_SIZE,24
+exec-once = swww init
+exec-once = swww img ~/Pictures/wallpaper/SpaceAce.png
 exec-once = wl-paste --watch cliphist store
 exec-once = udiskie &
 exec-once = dunst
@@ -110,19 +112,19 @@ $mainMod = SUPER
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = $mainMod, Return, exec, kitty
-bind = $mainMod, E, exec, thunar
-bind = SUPERALT, F, exec, firefox-developer-edition
+bind = $mainMod, F, exec, thunar
+bind = SUPERALT, F, exec, firefox
 bind = SUPERALT, B, exec, brave
 bind = $mainMod, R, exec, wofi --show drun
 bind = SUPERSHIFT, R, exec, wofi --show run
-bind = SUPERALT, C, exec, discord-canary
+bind = SUPERALT, C, exec, discordcanary
 
 # Color picker
 bind = SUPERCTRL, P, exec, hyprpicker
 
 # Screenshot tool
-bind = , PRINT, exec, hyprshot -m region --clipboard-only
-bind = $mainMod, PRINT, exec, hyprshot -m output -o ~/Pictures/Screenshots/
+bind = , PRINT, exec, grimshot copy area | display
+bind = $mainMod, PRINT, exec, grimshot save output
 i
 # Using hardware keys
 bindel = , XF86MonBrightnessUp, exec, brightnessctl s +5%
@@ -139,8 +141,8 @@ bindel = , XF86AudioStop, exec, playerctl stop
 bind = $mainMod, V, togglefloating, 
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, D, togglesplit, # dwindle
-bind = $mainMod, F, fullscreen, 1
-bind = SUPERSHIFT, F, fullscreen, 0
+bind = $mainMod, M, fullscreen, 1
+bind = SUPERSHIFT, M, fullscreen, 0
 bind = $mainMod, C, killactive,
 bind = $mainMod, Q, exit,
 
@@ -190,7 +192,7 @@ bindm = $mainMod, mouse:273, resizewindow
 
 # Lid opening and closing
 # trigger when the switch is toggled
-bindl = ,switch:Lid Switch, exec,swaylock && systemctl suspend
+bindl = ,switch:Lid Switch, exec,swaylock -C $HOME/.dotfiles/home-manager/swaylock/config
 
 # For screensharing
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
