@@ -7,6 +7,5 @@
                                :anchor "top center")
            :stacking "bg"
            :exclusive "true"
-           :focusable "true"
-)
+           :focusable "true")
 

@@ -7,7 +7,7 @@
     #./eww
     ./gammastep
     ./hyprland
-    ./steam
+    ./kdeconnect
     #./swaylock
     ./swayidle
     ./starship

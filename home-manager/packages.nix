@@ -13,6 +13,7 @@
     waybar
     eww-wayland
     swaylock-effects
+    swayidle
     wofi
     sway-contrib.grimshot
     imagemagick
@@ -29,6 +30,9 @@
 
     ## gaming!!!
     steam
+    lutris
+    bottles
+    #minecraft
 
     ## file stuff
     xfce.thunar
@@ -44,7 +48,7 @@
     vlc
     qbittorrent
     p7zip
-    
+
     ## terminal
     kitty
     neovim
@@ -59,6 +63,7 @@
     libguestfs
     dunst
     git
+    neofetch
     openssh
     fzf
     exa
@@ -70,6 +75,8 @@
     playerctl
 
     ## VMs, VPNs, remote, syncing
+    distrobox
+    docker
     syncthing
     virt-manager 
     qemu 
@@ -79,12 +86,14 @@
     ## kde
     krita
     kalzium
+    kdeconnect
     kitty
     okular
 
     ## programming
     nodejs
     lua
+    jupyter
 
     ## media
     gimp
@@ -98,6 +107,8 @@
       pip
       wheel
       neofetch
+      numpy
+      #qiskit # waiting for this to be fixed :sob:
     ];
       python3Custom = python3.withPackages custom-python-packages;
     in python3Custom)
@@ -136,6 +147,7 @@
     "cloudflare-warp"
     "cudatoolkit"
     "steam" "steam-run" "steam-original"
+    "minecraft-launcher"
   ];
 
   nixpkgs.overlays =

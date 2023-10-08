@@ -1,10 +1,12 @@
 {lib, pkgs, ...}:
 let
   laptop_screen = "eDP-1";
+  ext_mon_hdmi = "HDMI-A-1";
 in
 ''
 # See https://wiki.hyprland.org/Configuring/Monitors/
 monitor=${laptop_screen},preferred,auto,1.25
+monitor=${ext_mon_hdmi},preferred,auto,1,mirror,${laptop_screen}
 
 
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more

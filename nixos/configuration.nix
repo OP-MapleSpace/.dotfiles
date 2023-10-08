@@ -36,8 +36,22 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # Enable X11 and its stuff.
+  services.xserver = {
+    enable = true;
+
+    # libinput
+    libinput.enable = true;
+    
+    # SDDM + Theme
+    displayManager.sddm.sugarCandyNix = {
+      enable = true; # This enables SDDM automatically and set its theme to
+                     # "sddm-sugar-candy-nix"
+      # settings = {
+        # Set your configuration options here.
+      # };
+    };
+  };
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -45,9 +59,6 @@
   #   "eurosign:e";
   #   "caps:escape" # map caps to escape.
   # };
-
-  # Enable SDDM
-  services.xserver.displayManager.sddm.enable = true;
 
   # Enable GVFS
   services.gvfs.enable = true;
@@ -79,11 +90,24 @@
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
-  enable = true;
-  alsa.enable = true;
-  alsa.support32Bit = true;
-  pulse.enable = true;  
-  jack.enable = true;
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;  
+    jack.enable = true;
+  };
+
+  services.mpd = {
+    enable = true;
+    musicDirectory = "/path/to/music";
+    extraConfig = ''
+      # must specify one or more outputs in order to play audio!
+      # (e.g. ALSA, PulseAudio, PipeWire), see next sections
+      audio_output {
+        type "pipewire"
+        name "My PipeWire Output"
+      }
+    '';
   };
 
   # Enable hyprland
@@ -99,14 +123,14 @@
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
-  
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+ 
+  # Enable Docker
+  virtualisation.docker.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.maplespace = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "docker" "input" ];
     packages = with pkgs; [
     
     ];
@@ -119,6 +143,7 @@
     neovim
     wget
     python3
+    #watershot
   ];
 
   # Allow unfree packages
@@ -162,10 +187,14 @@
 
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall = {
+    allowedTCPPortRanges = [ 
+      { from = 1714; to = 1764; } # KDE Connect
+    ];
+    allowedUDPPortRanges = [ 
+      { from = 1714; to = 1764; } # KDE Connect
+    ];
+  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
