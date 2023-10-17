@@ -61,18 +61,20 @@
     cowsay
     ### utilities
     libguestfs
+    htop
     dunst
     git
     neofetch
     openssh
     fzf
-    exa
+    eza
     bat
     ripgrep
     killall
     brightnessctl
     wireplumber
     playerctl
+    #etcher
 
     ## VMs, VPNs, remote, syncing
     distrobox
@@ -108,6 +110,7 @@
       wheel
       neofetch
       numpy
+      #rocketpy
       #qiskit # waiting for this to be fixed :sob:
     ];
       python3Custom = python3.withPackages custom-python-packages;
