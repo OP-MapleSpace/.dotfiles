@@ -74,6 +74,7 @@
     brightnessctl
     wireplumber
     playerctl
+    usbutils
     #etcher
 
     ## VMs, VPNs, remote, syncing

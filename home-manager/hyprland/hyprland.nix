@@ -8,10 +8,14 @@ in
 monitor=${laptop_screen},preferred,auto,1.25
 monitor=${ext_mon_hdmi},preferred,auto,1,mirror,${laptop_screen}
 
+xwayland {
+  force_zero_scaling = true
+}
 
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
 # Execute your favorite apps and scripts at launch
+env = GDK_SCALE,1.25
 env = XCURSOR_SIZE,24
 exec-once = swww init
 exec-once = swww img ~/Pictures/wallpaper/SpaceAce.png
@@ -55,10 +59,13 @@ decoration {
     # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
     rounding = 10
-    blur = yes
-    blur_size = 3
-    blur_passes = 1
-    blur_new_optimizations = on
+
+    blur {
+      enabled = yes
+      size = 3
+      passes = 3
+      new_optimizations = on
+    }
 
     drop_shadow = yes
     shadow_range = 4
