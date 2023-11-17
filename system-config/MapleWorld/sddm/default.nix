@@ -7,7 +7,7 @@
     settings = {
       # Set your configuration options here.
       # Here is a simple example:
-      Background = lib.cleanSource ./background.png;
+      Background = lib.cleanSource ../../../wallpaper/SpaceAce.png;
       FullBlur = true;
       BlurRadius = 25;
       FormPosition  =  "left";
