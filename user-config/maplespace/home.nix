@@ -1,18 +1,21 @@
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   imports = [
+    inputs.anyrun.homeManagerModules.default
+
     ./packages.nix
-    ./fish
+
+    ./anyrun
+    ../../system-config/MapleWorld/fish
     #./eww
     ./gammastep
     ./hyprland
     ./kdeconnect
-    #./swaylock
-    ./swayidle
     ./starship
+    ./swayidle
   ];
-  
+
   home.username = "maplespace";
   home.homeDirectory = "/home/maplespace";
 
@@ -33,7 +36,8 @@
     };
   };
 
-  xdg.configFile."nvim/init.lua".source = ./neovim-lua/init.lua;
+  xdg.configFile."nvim/init.lua".source = ./neovim/init.lua;
+  xdg.configFile."swaylock/config".source = ./swaylock/config;
   xdg.configFile."eww/eww.yuck".source = ./eww/eww.yuck;
   xdg.configFile."eww/eww.scss".source = ./eww/eww.scss;
 

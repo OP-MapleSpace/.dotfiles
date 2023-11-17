@@ -14,7 +14,6 @@
     eww-wayland
     swaylock-effects
     swayidle
-    wofi
     sway-contrib.grimshot
     imagemagick
     swww
@@ -35,8 +34,8 @@
     #minecraft
 
     ## file stuff
-    xfce.thunar
     lf
+    cinnamon.nemo-with-extensions
     udiskie
     onlyoffice-bin
     libreoffice
@@ -72,18 +71,22 @@
     ripgrep
     killall
     brightnessctl
+    networkmanager-openconnect
+    networkmanagerapplet
     wireplumber
     playerctl
     usbutils
+    glibc
     #etcher
 
     ## VMs, VPNs, remote, syncing
     distrobox
     docker
     syncthing
-    virt-manager 
-    qemu 
-    protonvpn-gui 
+    virt-manager
+    remmina
+    qemu
+    protonvpn-gui
     protonvpn-cli
 
     ## kde

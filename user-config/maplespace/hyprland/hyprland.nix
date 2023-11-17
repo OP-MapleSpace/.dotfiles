@@ -5,8 +5,8 @@ let
 in
 ''
 # See https://wiki.hyprland.org/Configuring/Monitors/
-monitor=${laptop_screen},preferred,auto,1.25
-monitor=${ext_mon_hdmi},preferred,auto,1,mirror,${laptop_screen}
+monitor=${laptop_screen}, 2560x1440@165, 0x0, 1.25
+monitor=${ext_mon_hdmi}, 1920x1080@144, auto, 1
 
 xwayland {
   force_zero_scaling = true
@@ -17,11 +17,11 @@ xwayland {
 # Execute your favorite apps and scripts at launch
 env = GDK_SCALE,1.25
 env = XCURSOR_SIZE,24
-exec-once = swww init
-exec-once = swww img ~/Pictures/wallpaper/SpaceAce.png
+exec-once = waybar
 exec-once = wl-paste --watch cliphist store
 exec-once = udiskie &
 exec-once = dunst
+exec-once = nm-applet
 
 # Source a file (multi-file configs)
 # source = ~/.config/hypr/myColors.conf
@@ -103,6 +103,12 @@ gestures {
     workspace_swipe = on
 }
 
+misc {
+    # No more anime wallpaper hopefully this means swww actually does actually do its job 100% of the time
+    force_default_wallpaper = 0
+    disable_hyprland_logo = true
+}
+
 # Example per-device config
 # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
 device:epic mouse V1 {
@@ -121,11 +127,13 @@ $mainMod = SUPER
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = $mainMod, Return, exec, kitty
-bind = $mainMod, F, exec, thunar
+bind = $mainMod, F, exec, nemo
 bind = SUPERALT, F, exec, firefox
+bind = SUPERALT, M, exec, distrobox-enter debian-unstable -- mercury-browser
 bind = SUPERALT, B, exec, brave
-bind = $mainMod, R, exec, wofi --show drun
-bind = SUPERSHIFT, R, exec, wofi --show run
+bind = SUPERALT, K, exec, krita
+bind = SUPERSHIFTALT, K, exec, kalzium
+bind = $mainMod, R, exec, anyrun
 bind = SUPERALT, C, exec, discordcanary
 
 # Color picker
@@ -174,7 +182,7 @@ bind = $mainMod, 3, workspace, 3
 bind = $mainMod, 4, workspace, 4
 bind = $mainMod, 5, workspace, 5
 bind = $mainMod, 6, workspace, 6
-bind = $mainMod, 7, workspace, 7 
+  bind = $mainMod, 7, workspace, 7 
 bind = $mainMod, 8, workspace, 8
 bind = $mainMod, 9, workspace, 9
 bind = $mainMod, 0, workspace, 10
@@ -200,9 +208,14 @@ bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod, mouse:273, resizewindow
 
 # Lid opening and closing
-# trigger when the switch is toggled
-bindl = ,switch:Lid Switch, exec,swaylock -C $HOME/.dotfiles/home-manager/swaylock/config
+# trigger when the switch is turning on (i.e., lid closes)
+bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "${laptop_screen}, disable" && swaylock
+# trigger when the switch is turning off (i.e., lid opens)
+bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "${laptop_screen}, 2560x1440, 0x0, 1.25"
 
 # For screensharing
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+# Wallpaper
+exec-once = swww init && swww img ~/Pictures/wallpaper/SpaceAce.png
 ''

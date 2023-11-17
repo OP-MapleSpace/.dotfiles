@@ -18,6 +18,11 @@
 	printf "\033[38;5;033m\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = /\n"
       '';
     };
-  
+
+    shellAbbrs = {
+      upnixch = "sudo nix-channel --update && sudo nix flake update";
+      upnixconf = "sudo nixos-rebuild switch --flake .#AlphaHlynurSolare --upgrade && home-manager switch --flake .";
+    };
+
   };
 }

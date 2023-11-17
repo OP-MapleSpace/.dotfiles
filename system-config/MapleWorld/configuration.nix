@@ -6,15 +6,16 @@
 {
 
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    [
+      ./hardware-configuration.nix # Include the results of the hardware scan
+      ./sddm
     ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "AlphaHlynurSolare"; # Define your hostname.
+  networking.hostName = "MapleWorld"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -39,18 +40,7 @@
   # Enable X11 and its stuff.
   services.xserver = {
     enable = true;
-
-    # libinput
     libinput.enable = true;
-    
-    # SDDM + Theme
-    displayManager.sddm.sugarCandyNix = {
-      enable = true; # This enables SDDM automatically and set its theme to
-                     # "sddm-sugar-candy-nix"
-      # settings = {
-        # Set your configuration options here.
-      # };
-    };
   };
 
   # Configure keymap in X11
@@ -211,4 +201,11 @@
 
   system.autoUpgrade.enable = true;
 
+  nix.optimise.automatic = true;
+
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 2d";
+  };
 }
