@@ -11,9 +11,9 @@ If you have any tips or questions please feel free to tell/ask me!
 
     
 ## To-Do (in no order)
-- [  ] configure eww
-- [  ] configure anyrun
-- [  ] fix notifications (kind of)
-- [  ] maybe fix screenshot tool? Attempt to get Watershot once again?
-- [  ] configure tmux
+- [ ] configure eww
+- [ ] configure anyrun
+- [ ] fix notifications (kind of)
+- [ ] maybe fix screenshot tool? Attempt to get Watershot once again?
+- [ ] configure tmux
 
