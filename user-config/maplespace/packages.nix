@@ -7,7 +7,7 @@
   home.file."jdks/openjdk17".source = pkgs.jetbrains.jdk;
 
   home.packages = with pkgs; [
-    ## hyprland stuff
+    ## hyprland/wayland stuff
     hyprpaper
     hyprpicker
     waybar
@@ -15,8 +15,7 @@
     swaylock-effects
     swayidle
     sway-contrib.grimshot
-    imagemagick
-    swww
+    wl-clipboard
 
     ## browsers
     firefox-devedition
@@ -63,6 +62,7 @@
     htop
     dunst
     git
+    imagemagick
     neofetch
     openssh
     fzf
@@ -93,6 +93,7 @@
     krita
     kalzium
     kdeconnect
+    kdenlive
     kitty
     okular
 

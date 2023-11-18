@@ -182,7 +182,7 @@ bind = $mainMod, 3, workspace, 3
 bind = $mainMod, 4, workspace, 4
 bind = $mainMod, 5, workspace, 5
 bind = $mainMod, 6, workspace, 6
-  bind = $mainMod, 7, workspace, 7 
+bind = $mainMod, 7, workspace, 7
 bind = $mainMod, 8, workspace, 8
 bind = $mainMod, 9, workspace, 9
 bind = $mainMod, 0, workspace, 10
@@ -217,5 +217,6 @@ bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "${laptop_screen}, 256
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 # Wallpaper
-exec-once = swww init && swww img ~/Pictures/wallpaper/SpaceAce.png
+#exec-once = swww init && swww img ~/.dotfiles/wallpaper/SpaceAce.png
+exec-once = hyprpaper
 ''

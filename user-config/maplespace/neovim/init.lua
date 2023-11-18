@@ -1,9 +1,12 @@
 -- utf-8 encoding
 vim.opt.encoding = "utf-8"
+
 -- enable mouse
 vim.opt.mouse = "a"
+
 -- enable lists
 vim.opt.list = true
+
 -- set indent width
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -11,30 +14,38 @@ vim.opt.softtabstop = 4
 vim.cmd("set expandtab")
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+
 -- set case handling
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
 -- command line settings
 vim.opt.cmdheight = 1
+
 -- set some timeouts
 vim.opt.updatetime = 300
 vim.opt.tm = 500
 vim.cmd("set shortmess+=c")
+
 -- enable hidden bufferrs
 vim.opt.hidden = true
--- split config
 
+-- split config
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
 -- sign column config
 vim.opt.signcolumn = "yes"
 vim.opt.number = true
 vim.opt.relativenumber = true
+
 -- disable bells
 vim.opt.errorbells = false
 vim.opt.visualbell = false
+
 -- use system clipboard
 vim.cmd("set clipboard+=unnamedplus")
+
 -- syntax highlighting
 vim.opt.syntax = "on"
 vim.opt.filetype = "on"
@@ -62,18 +73,12 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 -- Icons + theme
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'https://github.com/yamatsum/nvim-nonicons'
-Plug 'bluz71/vim-moonfly-colors'
-Plug 'ap/vim-css-color'
-Plug 'https://github.com/p00f/nvim-ts-rainbow'
 
 -- Start screen
 Plug 'mhinz/vim-startify'
 
--- Linting + syntax
-Plug 'w0rp/ale'
-Plug 'https://github.com/vim-syntastic/syntastic/'
-
--- Autopairing, autocomplete, etc. 
+-- Linting, syntax, autopairing, autocomplete, etc.
+Plug 'dense-analysis/ale'
 Plug 'https://github.com/windwp/nvim-ts-autotag'
 Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
@@ -82,11 +87,8 @@ Plug 'junegunn/vim-easy-align'
 -- Commenting
 Plug 'https://github.com/tpope/vim-commentary'
 
--- On-demand loading
-Plug ('tpope/vim-fireplace', { ['for'] = 'clojure' })
-
 -- Treesitter for many different plugins
-Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})  -- We recommend updating the parsers on update
+Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
 -- Games :) (Tetris is so fun)
 Plug 'https://github.com/alec-gibson/nvim-tetris'
@@ -100,14 +102,22 @@ Plug 'kabouzeid/nvim-lspinstall'
 -- Yuck (for EWW)
 Plug 'https://github.com/elkowar/yuck.vim'
 
+-- Markdown
+Plug 'https://github.com/preservim/vim-markdown/'
+
 -- fzf
 Plug 'gfanto/fzf-lsp.nvim'
 Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
 
--- Lua functions I think
+-- Lua stuff I think
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'https://github.com/nvim-lua/plenary.nvim'
+Plug 'tjdevries/nlua.nvim'
+Plug 'nvim-lua/completion-nvim'
+Plug 'euclidianAce/BetterLua.vim'
+Plug 'tjdevries/manillua.nvim'
+
 
 -- MATLAB
 Plug 'https://github.com/yinflying/matlab.vim'
@@ -126,18 +136,9 @@ Plug 'jbyuki/nabla.nvim'
 -- for popups I think
 Plug 'nvim-lua/popup.nvim'
 
--- more lua stuff probably
-Plug 'tjdevries/nlua.nvim'
-Plug 'nvim-lua/completion-nvim'
-Plug 'euclidianAce/BetterLua.vim'
-Plug 'tjdevries/manillua.nvim'
-
 -- Status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
--- Battery
-Plug 'https://github.com/lambdalisue/battery.vim/'
 
 -- File system viewer
 Plug ('ms-jpq/chadtree', {['do'] = 'python3 -m chadtree deps'})
@@ -168,8 +169,10 @@ Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'rbong/vim-flog'
 Plug 'https://github.com/airblade/vim-gitgutter'
 
--- Basically allows me to do sudo while keeping my configs
-Plug 'https://github.com/lambdalisue/suda.vim'
+-- End
+vim.call('plug#end')
+
+--Extra--
 
 -- ALE (Asynchronous Lint Engine)
 vim.g['ale_fixers'] = {
@@ -182,8 +185,17 @@ vim.g['ale_fix_on_save'] = 1
 -- Airline
 vim.g['airline#extensions#tabline#enabled'] = 1
 
--- vim battery
-vim.g['battery#update_tabline'] = 1    -- For tabline.
-vim.g['battery#update_statusline'] = 1 -- For statusline.
-
-vim.call('plug#end')
+-- Neorg
+require('neorg').setup {
+    load = {
+        ["core.defaults"] = {}, -- Loads default behaviour
+        ["core.concealer"] = {}, -- Adds pretty icons to your documents
+        ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+                workspaces = {
+                    notes = "~/notes",
+                },
+            },
+        },
+    },
+}

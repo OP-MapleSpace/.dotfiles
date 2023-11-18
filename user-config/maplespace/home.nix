@@ -12,6 +12,7 @@
     ./gammastep
     ./hyprland
     ./kdeconnect
+    ./obs-studio
     ./starship
     ./swayidle
   ];
@@ -36,10 +37,11 @@
     };
   };
 
-  xdg.configFile."nvim/init.lua".source = ./neovim/init.lua;
-  xdg.configFile."swaylock/config".source = ./swaylock/config;
   xdg.configFile."eww/eww.yuck".source = ./eww/eww.yuck;
   xdg.configFile."eww/eww.scss".source = ./eww/eww.scss;
+  xdg.configFile."hypr/hyprpaper.conf".source = ./hyprland/hyprpaper.conf;
+  xdg.configFile."nvim/init.lua".source = ./neovim/init.lua;
+  xdg.configFile."swaylock/config".source = ./swaylock/config;
 
   # You can update Home Manager without changing this value
   home.stateVersion = "22.11";
