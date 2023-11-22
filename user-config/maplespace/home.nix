@@ -15,26 +15,27 @@
     ./obs-studio
     ./starship
     ./swayidle
+    ./syncthing
   ];
 
   home.username = "maplespace";
   home.homeDirectory = "/home/maplespace";
 
-  dconf.enable = true;
+  dconf = {
+    enable = true;
+    settings = {
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = ["qemu:///system"];
+        uris = ["qemu:///system"];
+      };
+    };
+  };
 
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 34560000;
     maxCacheTtl = 34560000;
     enableSshSupport = true;
-  };
-
-  services.syncthing = {
-    enable = true;
-    tray = {
-      enable = true;
-      package = pkgs.syncthingtray-minimal;
-    };
   };
 
   xdg.configFile."eww/eww.yuck".source = ./eww/eww.yuck;

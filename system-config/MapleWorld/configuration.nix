@@ -114,15 +114,15 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
  
-  # Enable Docker
+  # Enable VMs and Docker
+  virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.maplespace = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" "input" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "input" "libvirtd" ];
     packages = with pkgs; [
-    
     ];
   };
 
@@ -138,7 +138,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  
+
   # Editor
   environment.variables.EDITOR = "nvim";
 
@@ -148,6 +148,9 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.sshd.enable = true;
+
+  # Enable OpenGL
+  hardware.opengl.enable = true;
 
   # Fonts
   fonts = {
@@ -201,11 +204,4 @@
 
   system.autoUpgrade.enable = true;
 
-  nix.optimise.automatic = true;
-
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 2d";
-  };
 }
