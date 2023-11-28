@@ -98,6 +98,7 @@
     okular
 
     ## programming
+    micromamba
     nodejs
     lua
     jupyter
@@ -107,24 +108,11 @@
     inkscape
     blender
     ffmpeg
-
-    ## Python
-    (let
-    custom-python-packages = python-packages: with python-packages; [
-      pip
-      wheel
-      neofetch
-      numpy
-      #rocketpy
-      #qiskit # waiting for this to be fixed :sob:
-    ];
-      python3Custom = python3.withPackages custom-python-packages;
-    in python3Custom)
   ];
 
   # Cursor settings
     home.pointerCursor = 
-    let 
+    let
       getFrom = url: hash: name: {
           name = name;
           size = 48;
