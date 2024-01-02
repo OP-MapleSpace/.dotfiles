@@ -20,9 +20,10 @@
     };
 
     shellAbbrs = {
-      upnixch = "sudo nix-channel --update && sudo nix flake update";
-      upnixconf = "sudo nixos-rebuild switch --flake .#MapleWorld";
-      upnixtest = "sudo nixos-rebuild test --flake .#MapleWorld";
+      upnch = "sudo nix-channel --update && sudo nix flake update";
+      upnco = "sudo nixos-rebuild switch --flake .#MapleWorld";
+      upnte = "sudo nixos-rebuild test --flake .#MapleWorld";
+      upnrb = "sudo nixos-rebuild switch --flake .#MapleWorld --rollback";
     };
 
   };

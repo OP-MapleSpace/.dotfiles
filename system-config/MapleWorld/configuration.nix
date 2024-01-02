@@ -15,17 +15,72 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "MapleWorld"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking = {
+    hostName = "MapleWorld"; # Define your hostname.
+
+    networkmanager.enable = true;
+
+    nat = {
+      enable = true;
+      externalInterface = "eth0";
+      internalInterfaces = [ "wg0" ];
+    };
+
+    /*wireguard.interfaces = {
+      # "wg0" is the network interface name. You can name the interface arbitrarily.
+      wg0 = {
+        # Determines the IP address and subnet of the server's end of the tunnel interface.
+        ips = [ "192.168.2.17/24" ];
+
+        # The port that WireGuard listens to. Must be accessible by the client.
+        listenPort = 51820;
+
+        # This allows the wireguard server to route your traffic to the internet and hence be like a VPN
+        # For this to work you have to set the dnsserver IP of your router (or dnsserver of choice) in your clients
+        postSetup = ''
+          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
+        '';
+
+        # This undoes the above command
+        postShutdown = ''
+          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
+        '';
+
+        # Note: The private key can also be included inline via the privateKey option,
+        # but this makes the private key world-readable; thus, using privateKeyFile is
+        # recommended.
+        privateKeyFile = "/home/maplespace/Downloads/ProtonVPN_server_configs/protonfun_-NL-FREE-177131.conf";
+
+        peers = [
+          # List of allowed peers.
+          { # Feel free to give a meaning full name
+            # Public key of the peer (not a file path).
+            publicKey = "kGXEd8fGzTtRJZ4lbbLwCKGNQbHnb7S6uh9hi/Gmdjg=";
+            # List of IPs assigned to this peer within the tunnel subnet. Used to configure routing.
+            allowedIPs = [ "192.168.2.17/24" ];
+          }
+        ];
+      };
+    };*/
+
+    # Configure network proxy if necessary
+    # proxy.default = "http://user:password@proxy:port/";
+    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+    # Open ports in the firewall.
+    firewall = {
+      allowedTCPPortRanges = [ 
+        { from = 1714; to = 1764; } # KDE Connect
+      ];
+      allowedUDPPortRanges = [ 
+        { from = 1714; to = 1764; } # KDE Connect
+      ];
+      allowedUDPPorts = [ 51820 ]; # 51820 = WireGuard
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "America/Toronto";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
@@ -115,8 +170,18 @@
   };
  
   # Enable VMs and Docker
-  virtualisation.libvirtd.enable = true;
-  virtualisation.docker.enable = true;
+  virtualisation = {
+    libvirtd.enable = true;
+    podman = {
+      enable = true;
+
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.maplespace = {
@@ -178,16 +243,6 @@
     };
   };
 
-
-  # Open ports in the firewall.
-  networking.firewall = {
-    allowedTCPPortRanges = [ 
-      { from = 1714; to = 1764; } # KDE Connect
-    ];
-    allowedUDPPortRanges = [ 
-      { from = 1714; to = 1764; } # KDE Connect
-    ];
-  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

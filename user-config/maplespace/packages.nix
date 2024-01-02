@@ -1,6 +1,5 @@
 # thanks to Nathan for helping me with this: https://github.com/Nathan13888/.dotfiles/blob/master/home-manager/packages.nix
 { config, pkgs, lib, ... }:
-
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -30,6 +29,7 @@
     steam
     lutris
     bottles
+    ryujinx
     #minecraft
 
     ## file stuff
@@ -60,6 +60,7 @@
     ### utilities
     libguestfs
     htop
+    btop
     dunst
     git
     imagemagick
@@ -102,6 +103,8 @@
     nodejs
     lua
     jupyter
+    gfortran
+    jq
 
     ## media
     gimp
@@ -111,22 +114,21 @@
   ];
 
   # Cursor settings
-    home.pointerCursor = 
+    home.pointerCursor =
     let
       getFrom = url: hash: name: {
-          name = name;
-          size = 48;
-          package = 
-            pkgs.runCommand "moveUp" {} ''
-              mkdir -p $out/share/icons
-              ln -s ${pkgs.fetchzip {
-                url = url;
-                hash = hash;
-              }} $out/share/icons/${name}
-          '';
-        };
+        name = name;
+        size = 48;
+        package = pkgs.runCommand "moveUp" {} ''
+          mkdir -p $out/share/icons
+          ln -s ${pkgs.fetchzip {
+            url = url;
+            hash = hash;
+          }} $out/share/icons/${name}
+        '';
+      };
     in
-      getFrom 
+      getFrom
         "https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.3/Bibata-Modern-Ice.tar.gz"
         "sha256-9lDvV2dgGFrLy8Y55ZYbiTDiN0DscX8Uju5YGWUuWyE="
         "Bibata-Modern-Ice";

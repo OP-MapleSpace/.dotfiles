@@ -6,14 +6,15 @@
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland-contrib = {
-      url = github:hyprwm/contrib;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-colors.url = github:misterio77/nix-colors;
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
     sddm-sugar-candy-nix = {
       url = gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     anyrun = {
       url = github:Kirottu/anyrun;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,11 +33,10 @@
       #inputs.nixpkgs.follows = "nixpkgs";
     #};
 
-    hyprland.url = "github:hyprwm/Hyprland";
   };
 
 
-  outputs = inputs@{ self, nixpkgs, home-manager, hyprland, hyprland-contrib, sddm-sugar-candy-nix, anyrun, ... }:
+  outputs = { self, nixpkgs, home-manager, hyprland, sddm-sugar-candy-nix, anyrun, ... }@inputs:
     let
       system = "x86_64-linux";
       specialArgs = inputs;
@@ -45,6 +45,7 @@
       nixosConfigurations = {
         #AlphaHlynurSolare = nixpkgs.lib.nixosSystem {};
         MapleWorld = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
           modules = [
 
             home-manager.nixosModules.home-manager

@@ -1,4 +1,4 @@
-{pkgs, lib, callPackage, ...}:
+{ pkgs, ... }:
 {
   services.gammastep = {
     enable = true;
