@@ -13,8 +13,11 @@
     eww-wayland
     swaylock-effects
     swayidle
-    sway-contrib.grimshot
     wl-clipboard
+    grim
+    slurp
+    swappy
+
 
     ## browsers
     firefox-devedition

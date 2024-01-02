@@ -11,8 +11,7 @@ If you have any tips or questions please feel free to tell/ask me!
 - wallpaper: centralized place for all the configs to use a wallpaper
     
 ## To-Do (in no order)
+- [ ] fix notifications
 - [ ] configure eww
 - [ ] configure anyrun
-- [ ] fix notifications (kind of)
-- [ ] remove the border from the screenshot tool
 - [ ] configure tmux

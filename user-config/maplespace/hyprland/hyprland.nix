@@ -140,9 +140,11 @@ bind = SUPERALT, C, exec, discordcanary
 bind = SUPERCTRL, P, exec, hyprpicker
 
 # Screenshot tool
-bind = , PRINT, exec, grimshot copy area | display
-bind = $mainMod, PRINT, exec, grimshot save output
-i
+bind = SUPERSHIFT, s, exec, grim -g "$(slurp)" - | convert - -shave 1x1 PNG:- | swappy -f - # area capture
+bind = , PRINT, exec, grim -t png ~/Sync/Pictures/Screenshots/$(date +'%s.png') # full window capture
+# Allowing Swappy to edit image from clipboard
+bind = SUPERCTRL, s, exec, wl-paste | swappy -f -
+
 # Using hardware keys
 bindel = , XF86MonBrightnessUp, exec, brightnessctl s +5%
 bindel = , XF86MonBrightnessDown, exec, brightnessctl s 5%-
