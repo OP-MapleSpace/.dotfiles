@@ -102,7 +102,6 @@
     micromamba
     nodejs
     lua
-    jupyter
     gfortran
     jq
 

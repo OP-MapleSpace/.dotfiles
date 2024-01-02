@@ -6,6 +6,7 @@
     inputs.nix-colors.homeManagerModules.default
 
     ./packages.nix
+    ./python.nix
 
     ./anyrun
     ../../system-config/MapleWorld/fish
@@ -66,6 +67,7 @@
 
   xdg.configFile."eww/eww.yuck".source = ./eww/eww.yuck;
   xdg.configFile."eww/eww.scss".source = ./eww/eww.scss;
+  xdg.configFile."eww/main.py".source = ./eww/main.py;
   xdg.configFile."hypr/hyprpaper.conf".source = ./hyprland/hyprpaper.conf;
   xdg.configFile."nvim/init.lua".source = ./neovim/init.lua;
   xdg.configFile."swaylock/config".source = ./swaylock/config;
