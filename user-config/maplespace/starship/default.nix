@@ -3,7 +3,7 @@
   programs.starship.enableFishIntegration = true;
   programs.starship.settings = {
     add_newline = false;
-    format = "$username[@](#${config.colorScheme.palette.base07})$hostname [visiting](#${config.colorScheme.palette.base0B}) $directory$line_break[$status](bold)$character ";
+    format = "$username[@](#${config.colorScheme.palette.base04})$hostname [visiting](#${config.colorScheme.palette.base0B}) $directory$line_break[$status](bold)$character ";
     right_format = "$cmd_duration | $memory_usage | $battery ";
 
     battery.display = [
@@ -38,9 +38,9 @@
 
     character = {
       # success_symbol = "[>\]\)====>](bold green)";
-      success_symbol = "[bee status: :\\)](bold #${config.colorScheme.palette.base0E}";
+      success_symbol = "[bee status: :\\)](bold #${config.colorScheme.palette.base0E})";
       # error_symbol = "[XXXXXXX](bold red)";
-      error_symbol = "[bee status: :\\(](bold #${config.colorScheme.palette.base0F}";
+      error_symbol = "[bee status: :\\(](bold #${config.colorScheme.palette.base0F})";
     };
 
     cmd_duration = {
@@ -52,7 +52,7 @@
     hostname = {
       ssh_only = false;
       disabled = false;
-      style = "bold #${config.colorScheme.palette.base04}";
+      style = "bold #${config.colorScheme.palette.base0D}";
       format = "[$ssh_symbol$hostname]($style)";
     };
 

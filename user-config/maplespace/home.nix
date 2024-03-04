@@ -52,7 +52,7 @@
       base0A = "#ff8375"; # light red | Classes, Markup Bold, Search Text Background, Opening/Closing Embedded Language Tags
       base0B = "#00ff00"; # lime | Strings, Inherited Class, Markup Code, Diff Inserted
       base0C = "#00ffb7"; # turquoise | Support, Regular Expressions, Escape Characters, Markup Quotes
-      base0D = "#bb00ff"; # reddish-pink | Functions, Methods, Attribute IDs, Headings
+      base0D = "#ff00ff"; # magenta | Functions, Methods, Attribute IDs, Headings
       base0E = "#ffff00"; # yellow | Keywords, Storage, Selector, Markup Italic, Diff Changed
       base0F = "#ff0000"; # red | Deprecated, Diff Removed
     };
