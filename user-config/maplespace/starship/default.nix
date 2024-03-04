@@ -1,65 +1,65 @@
-{pkgs, lib, ...}: {
+{pkgs, lib, config, ...}: {
   programs.starship.enable = true;
   programs.starship.enableFishIntegration = true;
   programs.starship.settings = {
     add_newline = false;
-    format = "$username[@](#008cff)$hostname [visiting](#00ffff) $directory [<<](#ff00ff)[<](bold #5900bf)[<<](bold #3000bf) [status:](#3821ff) $memory_usage[| ](#2194ff)$battery$all[| ](#2194ff)$time[:end](#3821ff) [>>](#3000bf)[>](bold #5900bf)[>>](#ff00ff)$line_break[$status](bold)$character ";
-    right_format = "$cmd_duration";
-    
+    format = "$username[@](#${config.colorScheme.palette.base07})$hostname [visiting](#${config.colorScheme.palette.base0B}) $directory$line_break[$status](bold)$character ";
+    right_format = "$cmd_duration | $memory_usage | $battery ";
+
     battery.display = [
       {
         threshold = 20;
-	style = "bold red";
+        style = "bold #${config.colorScheme.palette.base0F}";
         discharging_symbol = " ";
         charging_symbol = "⚡️ ";
       }
 
       {
         threshold = 30;
-        style = "bold yellow";
+        style = "bold #${config.colorScheme.palette.base0E}";
         discharging_symbol = "  ";
         charging_symbol = "⚡️ ";
       }
 
       {
         threshold = 80;
-	style = "bold green";
-	discharging_symbol = "  ";
+        style = "bold #${config.colorScheme.palette.base0B}";
+        discharging_symbol = "  ";
         charging_symbol = "⚡️ ";
       }
 
       {
         threshold = 100;
-	style = "bold green";
-	discharging_symbol = "  ";
+        style = "bold #${config.colorScheme.palette.base0B}";
+        discharging_symbol = "  ";
         charging_symbol = "⚡️ ";
       }
     ];
 
     character = {
       # success_symbol = "[>\]\)====>](bold green)";
-      success_symbol = "[bee status: :\\)](bold yellow)";
+      success_symbol = "[bee status: :\\)](bold #${config.colorScheme.palette.base0E}";
       # error_symbol = "[XXXXXXX](bold red)";
-      error_symbol = "[bee status: :\\(](bold red)";
+      error_symbol = "[bee status: :\\(](bold #${config.colorScheme.palette.base0F}";
     };
 
     cmd_duration = {
       show_milliseconds = true;
       format = "[$duration]($style)";
-      style = "bold green";
+      style = "bold #${config.colorScheme.palette.base0E}";
     };
 
     hostname = {
       ssh_only = false;
       disabled = false;
-      style = "bold #0044ff";
+      style = "bold #${config.colorScheme.palette.base04}";
       format = "[$ssh_symbol$hostname]($style)";
     };
 
     username = {
       show_always = true;
-      style_root = "bold #0000ff";
-      style_user = "bold #008cff";
+      style_root = "bold #${config.colorScheme.palette.base02}";
+      style_user = "bold #${config.colorScheme.palette.base05}";
       format = "[$user]($style)";
     };
 
@@ -68,7 +68,7 @@
       threshold = -1;
       symbol = " ";
       format = "[$symbol $ram_pct]($style) ";
-      style = "bold dimmed #2194ff";
+      style = "bold #${config.colorScheme.palette.base0C}";
     };
 
     shell = {
@@ -84,14 +84,14 @@
 
     time = {
       disabled = false;
-      style = "#2194ff";
+      style = "#${config.colorScheme.palette.base0C}";
       format = "[$user]($style)";
     };
 
     directory = {
       read_only = " ";
       format = "[$path]($style)[$read_only]($read_only_style)";
-      style = "bold green";
+      style = "bold #${config.colorScheme.palette.base09}";
     };
 
     aws.symbol = "  ";

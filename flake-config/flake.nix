@@ -8,7 +8,15 @@
     };
     nix-colors.url = github:misterio77/nix-colors;
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = github:hyprwm/Hyprland;
+    split-monitor-workspaces = {
+      url = github:Duckonaut/split-monitor-workspaces;
+      inputs.hyprland.follows = "hyprland";
+    };
+    hycov={
+      url = github:DreamMaoMao/hycov;
+      inputs.hyprland.follows = "hyprland";
+    };
 
     sddm-sugar-candy-nix = {
       url = gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix;
@@ -24,6 +32,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    firefox = {
+      url = github:nix-community/flake-firefox-nightly;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Nixos Hardware
     #nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -36,7 +49,7 @@
   };
 
 
-  outputs = { self, nixpkgs, home-manager, hyprland, sddm-sugar-candy-nix, anyrun, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, sddm-sugar-candy-nix, anyrun, firefox, split-monitor-workspaces, hycov, ... }@inputs:
     let
       system = "x86_64-linux";
       specialArgs = inputs;
@@ -50,13 +63,15 @@
 
             home-manager.nixosModules.home-manager
             {
-              home-manager.useUserPackages = true;
-              home-manager.users.maplespace = import ../user-config/maplespace/home.nix;
-              home-manager.extraSpecialArgs = {  inherit system nixpkgs home-manager inputs; };
+              home-manager = {
+                useUserPackages = true;
+                users.maplespace = import ../user-config/maplespace/home.nix;
+                extraSpecialArgs = {  inherit system nixpkgs home-manager inputs; };
+              };
             }
 
             hyprland.nixosModules.default
-            {programs.hyprland.enable = true;}
+            #{wayland.windowManager.hyprland.enable = true;}
 
             sddm-sugar-candy-nix.nixosModules.default
             {

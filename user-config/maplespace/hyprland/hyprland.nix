@@ -48,9 +48,9 @@ general {
 
     gaps_in = 5
     gaps_out = 20
-    border_size = 2
-    col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-    col.inactive_border = rgba(595959aa)
+    border_size = 5
+    col.active_border = rgba(008cffee) rgba(008cffee) 45deg
+    col.inactive_border = rgba(eebbeeee) rgba(eebbeeee) 90deg
 
     layout = dwindle
 }
@@ -58,7 +58,19 @@ general {
 decoration {
     # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-    rounding = 10
+    rounding = 15
+    multisample
+
+    active_opacity = 1.0
+    inactive_opacity = 0.8
+    fullscreen_opacity = 1.0
+
+    drop_shadow = yes
+    shadow_range = 20
+    shadow_render_power = 2
+    shadow_ignore_window = yes
+    col.shadow = rgba(008cffdd)
+    col.shadow_inactive = rgba(eebbeeee)
 
     blur {
       enabled = yes
@@ -66,11 +78,6 @@ decoration {
       passes = 3
       new_optimizations = on
     }
-
-    drop_shadow = yes
-    shadow_range = 4
-    shadow_render_power = 3
-    col.shadow = rgba(1a1a1aee)
 }
 
 animations {
@@ -78,13 +85,16 @@ animations {
 
     # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
 
-    bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+    bezier = myBezier, 0.59, 0.42, 0.1, 1.2
+    bezier = wiggleInOut, 0.59, -0.09, 0.1, 1.1
+    bezier = linear, 0, 0, 1, 1
 
-    animation = windows, 1, 7, myBezier
-    animation = windowsOut, 1, 7, default, popin 80%
+    animation = windows, 1, 5, myBezier
+    animation = windowsOut, 1, 7, wiggleInOut, popin 80%
     animation = border, 1, 10, default
+    animation = borderangle, 1, 100, linear, loop
     animation = fade, 1, 7, default
-    animation = workspaces, 1, 6, default
+    animation = workspaces, 1, 6, wiggleInOut
 }
 
 dwindle {
@@ -104,7 +114,6 @@ gestures {
 }
 
 misc {
-    # No more anime wallpaper hopefully this means swww actually does actually do its job 100% of the time
     force_default_wallpaper = 0
     disable_hyprland_logo = true
 }
@@ -117,6 +126,9 @@ device:epic mouse V1 {
 
 # Example windowrule v1
 # windowrule = float, ^(kitty)$
+
+windowrule = opacity 0.9 override 0.8 override, ^(vesktop)$
+
 # Example windowrule v2
 # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
 # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
@@ -124,26 +136,31 @@ device:epic mouse V1 {
 
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 $mainMod = SUPER
+$shMod = SUPERSHIFT
+$altMod = SUPERALT
+$ctrlMod = SUPERCTRL
+$shaltMod = SUPERSHIFTALT
+$shctrlMod = SUPERSHIFTCTRL
+$shctrlaltMod = SUPERSHIFTCTRLALT
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = $mainMod, Return, exec, kitty
 bind = $mainMod, F, exec, nemo
-bind = SUPERALT, F, exec, firefox
-bind = SUPERALT, M, exec, distrobox-enter debian-unstable -- mercury-browser
-bind = SUPERALT, B, exec, brave
-bind = SUPERALT, K, exec, krita
-bind = SUPERSHIFTALT, K, exec, kalzium
+bind = $altMod, F, exec, floorp
+bind = $altMod, B, exec, brave
+bind = $altMod, K, exec, krita
+bind = $shaltMod, K, exec, kalzium
 bind = $mainMod, R, exec, anyrun
-bind = SUPERALT, C, exec, discordcanary
+bind = $altMod, C, exec, vesktop
 
 # Color picker
-bind = SUPERCTRL, P, exec, hyprpicker
+bind = $ctrlMod, P, exec, hyprpicker
 
 # Screenshot tool
-bind = SUPERSHIFT, s, exec, grim -g "$(slurp)" - | convert - -shave 1x1 PNG:- | swappy -f - # area capture
+bind = $shMod, s, exec, grim -g "$(slurp)" - | convert - -shave 1x1 PNG:- | swappy -f - # area capture
 bind = , PRINT, exec, grim -t png ~/Sync/Pictures/Screenshots/$(date +'%s.png') # full window capture
 # Allowing Swappy to edit image from clipboard
-bind = SUPERCTRL, s, exec, wl-paste | swappy -f -
+bind = $ctrlMod, s, exec, wl-paste | swappy -f -
 
 # Using hardware keys
 bindel = , XF86MonBrightnessUp, exec, brightnessctl s +5%
@@ -157,54 +174,104 @@ bindel = , XF86AudioPrev, exec, playerctl previous
 bindel = , XF86AudioStop, exec, playerctl stop
 
 # Working with windows
-bind = $mainMod, V, togglefloating, 
-bind = $mainMod, P, pseudo, # dwindle
+bind = $mainMod, V, togglefloating,
+bind = $altMod, V, pseudo, # dwindle
 bind = $mainMod, D, togglesplit, # dwindle
-bind = $mainMod, M, fullscreen, 1
-bind = SUPERSHIFT, M, fullscreen, 0
+bind = $mainMod, P, pin
 bind = $mainMod, C, killactive,
 bind = $mainMod, Q, exit,
+bind = $mainMod, E, exec, pypr expose
+bind = $shMod, M, fullscreen, 0
+bind = $mainMod, M, fullscreen, 1
+bind = $altMod, M, fullscreen, 2
+bind = $ctrlMod, M, fakefullscreen
+## Minimizing, brought to you by https://github.com/hyprland-community/pyprland/wiki/toggle_special
+bind = $mainMod SHIFT, N, togglespecialworkspace, stash # toggles "stash" special workspace visibility 
+bind = $mainMod, N, exec, pypr toggle_special stash # moves window to/from the "stash" workspace
 
 # Move focus with mainMod
-bind = $mainMod, H, movefocus, l
-bind = $mainMod, L, movefocus, r
-bind = $mainMod, J, movefocus, u
-bind = $mainMod, K, movefocus, d
-bind = $mainMod, left, movefocus, l
-bind = $mainMod, right, movefocus, r
-bind = $mainMod, up, movefocus, u
-bind = $mainMod, down, movefocus, d
-bind = ALT, Tab, cyclenext
-bind = $mainMod, TAB, workspace, previous
+binde = $mainMod, H, movefocus, l
+binde = $mainMod, L, movefocus, r
+binde = $mainMod, J, movefocus, u
+binde = $mainMod, K, movefocus, d
+binde = $mainMod, left, movefocus, l
+binde = $mainMod, right, movefocus, r
+binde = $mainMod, up, movefocus, u
+binde = $mainMod, down, movefocus, d
+binde = ALT, Tab, cyclenext
+binde = ALTSHIFT, Tab, cyclenext, prev
+binde = $mainMod, TAB, workspace, previous
 
-# Switch workspaces with mainMod + [0-9]
+# Resize
+bind = ALT, R, submap, resize
+submap = resize # will start a submap called "resize"
+binde = , right, resizeactive, 10 0
+binde = , left, resizeactive, -10 0
+binde = , up, resizeactive, 0 -10
+binde = , down, resizeactive, 0 10
+bind = , escape, submap, reset # reset to the global submap
+submap = reset
+
+/*
+#plugins
+plugin {
+    #split-monitor-workspaces {
+    #    count = 5
+    #}
+    hycov {
+        overview_gappo = 60 # gaps width from screen edge
+        overview_gappi = 24 # gaps width from clients
+        enable_hotarea = 1 # enable mouse cursor hotarea, when cursor enter hotarea, it will toggle overview    
+        hotarea_monitor = all # monitor name which hotarea is in, default is all
+        hotarea_pos = 1 # position of hotarea (1: bottom left, 2: bottom right, 3: top left, 4: top right)
+        hotarea_size = 10 # hotarea size, 10x10
+        swipe_fingers = 4 # finger number of gesture,move any directory
+        move_focus_distance = 100 # distance for movefocus,only can use 3 finger to move 
+        enable_gesture = 0 # enable gesture
+        auto_exit = 1 # enable auto exit when no client in overview
+        auto_fullscreen = 0 # auto make active window maximize after exit overview
+        only_active_workspace = 0 # only overview the active workspace
+        only_active_monitor = 0 # only overview the active monitor
+        enable_alt_release_exit = 0 # alt swith mode arg,see readme for detail
+        alt_replace_key = Alt_L # alt swith mode arg,see readme for detail
+        alt_toggle_auto_next = 0 # auto focus next window when toggle overview in alt swith mode
+        click_in_cursor = 1 # when click to jump,the target windwo is find by cursor, not the current foucus window.
+        hight_of_titlebar = 0 # height deviation of title bar height
+    }
+} */
+exec-once = pypr
+
+# Switch workspaces, using plugin https://github.com/Duckonaut/split-monitor-workspaces
 bind = $mainMod, 1, workspace, 1
 bind = $mainMod, 2, workspace, 2
 bind = $mainMod, 3, workspace, 3
 bind = $mainMod, 4, workspace, 4
 bind = $mainMod, 5, workspace, 5
-bind = $mainMod, 6, workspace, 6
-bind = $mainMod, 7, workspace, 7
-bind = $mainMod, 8, workspace, 8
-bind = $mainMod, 9, workspace, 9
-bind = $mainMod, 0, workspace, 10
-
-# Move active window to a workspace with mainMod + SHIFT + [0-9]
-bind = $mainMod SHIFT, 1, movetoworkspace, 1
-bind = $mainMod SHIFT, 2, movetoworkspace, 2
-bind = $mainMod SHIFT, 3, movetoworkspace, 3
-bind = $mainMod SHIFT, 4, movetoworkspace, 4
-bind = $mainMod SHIFT, 5, movetoworkspace, 5
-bind = $mainMod SHIFT, 6, movetoworkspace, 6
-bind = $mainMod SHIFT, 7, movetoworkspace, 7
-bind = $mainMod SHIFT, 8, movetoworkspace, 8
-bind = $mainMod SHIFT, 9, movetoworkspace, 9
-bind = $mainMod SHIFT, 0, movetoworkspace, 10
-
+# Move active window to a workspace
+bind = $shMod, 1, movetoworkspace, 1
+bind = $shMod, 2, movetoworkspace, 2
+bind = $shMod, 3, movetoworkspace, 3
+bind = $shMod, 4, movetoworkspace, 4
+bind = $shMod, 5, movetoworkspace, 5
+bind = $shaltMod, 1, movetoworkspacesilent, 1
+bind = $shaltMod, 2, movetoworkspacesilent, 2
+bind = $shaltMod, 3, movetoworkspacesilent, 3
+bind = $shaltMod, 4, movetoworkspacesilent, 4
+bind = $shaltMod, 5, movetoworkspacesilent, 5
+# Move acrive window to another monitor
+#bind = $shctrlMod, 1, changemonitor, 1
+#bind = $shctrlMod, 2, changemonitor, 2
+#bind = $shctrlMod, 3, changemonitor, 3
+#bind = $shctrlMod, 4, changemonitor, 4
+#bind = $shctrlMod, 5, changemonitor, 5
+#bind = $shctrlaltMod, 1, changemonitorsilent, 1
+#bind = $shctrlaltMod, 2, changemonitorsilent, 2
+#bind = $shctrlaltMod, 3, changemonitorsilent, 3
+#bind = $shctrlaltMod, 4, changemonitorsilent, 4
+#bind = $shctrlaltMod, 5, changemonitorsilent, 5
 # Scroll through existing workspaces with mainMod + scroll
 bind = $mainMod, mouse_down, workspace, e+1
 bind = $mainMod, mouse_up, workspace, e-1
-
 # Move/resize windows with mainMod + LMB/RMB and dragging
 bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod, mouse:273, resizewindow
@@ -217,6 +284,11 @@ bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "${laptop_screen}, 256
 
 # For screensharing
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
+windowrulev2 = noanim,class:^(xwaylandvideobridge)$
+windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
+windowrulev2 = maxsize 1 1,class:^(xwaylandvideobridge)$
+windowrulev2 = noblur,class:^(xwaylandvideobridge)$
 
 # Wallpaper
 #exec-once = swww init && swww img ~/.dotfiles/wallpaper/SpaceAce.png

@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ inputs, pkgs, lib, ... }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -7,5 +7,9 @@
       enable = true;
     };
     enableNvidiaPatches = false;
+    plugins = [
+      #inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+      #inputs.hycov.packages.${pkgs.system}.hycov
+    ];
   };
 }

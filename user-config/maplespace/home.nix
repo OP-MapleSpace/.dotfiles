@@ -38,7 +38,7 @@
     slug = "bluevibrance";
     name = "Blue Vibrance";
     author = "MapleSpace";
-    colors = {
+    palette = {
       base00 = "#000000"; # black | Default Background
       base01 = "#aaccee"; # ace | Lighter Background (Used for status bars, line number and folding marks)
       base02 = "#0000ff"; # blue | Selection Background
@@ -69,6 +69,7 @@
   xdg.configFile."eww/eww.scss".source = ./eww/eww.scss;
   xdg.configFile."eww/main.py".source = ./eww/main.py;
   xdg.configFile."hypr/hyprpaper.conf".source = ./hyprland/hyprpaper.conf;
+  xdg.configFile."hypr/pyprland.toml".source = ./hyprland/pyprland.toml;
   xdg.configFile."nvim/init.lua".source = ./neovim/init.lua;
   xdg.configFile."swaylock/config".source = ./swaylock/config;
 

@@ -1,5 +1,5 @@
 # thanks to Nathan for helping me with this: https://github.com/Nathan13888/.dotfiles/blob/master/home-manager/packages.nix
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -9,22 +9,26 @@
     ## hyprland/wayland stuff
     hyprpaper
     hyprpicker
+    pyprland
+    hypridle
     waybar
-    eww-wayland
+    eww
     swaylock-effects
     swayidle
     wl-clipboard
+    xwaylandvideobridge
     grim
     slurp
     swappy
 
 
     ## browsers
-    firefox-devedition
+    floorp
     brave
 
     ## discord :skull:
     discord-canary
+    vesktop
     discordchatexporter-cli
     element-desktop
 
@@ -41,6 +45,7 @@
     udiskie
     onlyoffice-bin
     libreoffice
+    zathura
     xournalpp
     gnome3.adwaita-icon-theme # xournal++ needs this for some reason
     feh
@@ -111,7 +116,7 @@
     ## media
     gimp
     inkscape
-    blender
+    #blender
     ffmpeg
   ];
 
@@ -137,7 +142,7 @@
 
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "discord-canary"
+    #"discord-canary"
     "slack"
     "teams"
     "zoom"

@@ -5,7 +5,7 @@ Here is my configuration for NixOS. It's still a work in progress but it's getti
 If you have any tips or questions please feel free to tell/ask me!
 
 ## Directories:
- - flake-config: where the flake.nix lies
+- flake-config: where the flake.nix lies
 - user-config: for user-wide programs and configs; used by home-manager
 - system-config: for system-wide programs and configs; usually used by nixos itself
 - wallpaper: centralized place for all the configs to use a wallpaper
@@ -14,4 +14,4 @@ If you have any tips or questions please feel free to tell/ask me!
 - [ ] fix notifications
 - [ ] configure eww
 - [ ] configure anyrun
-- [ ] configure tmux
+- [ ] configure zathura

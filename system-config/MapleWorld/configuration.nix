@@ -8,6 +8,8 @@
   imports =
     [
       ./hardware-configuration.nix # Include the results of the hardware scan
+
+      ./firefox-nightly
       ./sddm
     ];
 
@@ -168,7 +170,7 @@
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
- 
+
   # Enable VMs and Docker
   virtualisation = {
     libvirtd.enable = true;
@@ -227,7 +229,7 @@
       source-han-sans-japanese
       source-han-serif-japanese
       source-code-pro
-      nerdfonts
+      #nerdfonts
       fira
       fira-mono
       fira-code
