@@ -92,6 +92,7 @@
     distrobox
     docker
     syncthing
+    nextcloud-client
     virt-manager
     remmina
     qemu
@@ -116,7 +117,7 @@
     ## media
     gimp
     inkscape
-    #blender
+    blender
     ffmpeg
   ];
 

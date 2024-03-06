@@ -1,0 +1,33 @@
+/**
+  * @name Azurite
+  * @author DevEvil#8745
+  * @version 1.0
+  * @description Bring a new look to your Discord with Azurite, A dark and customizable theme
+  * @authorId 468132563714703390
+  * @authorLink https://devevil.com
+  * @source https://github.com/DevEvil99/Azurite-Discord-Theme
+  * @website https://devevil.com
+  * @invite jsQ9UP7kCA
+*/
+
+@import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Azurite/Azurite.theme.css');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+:root {
+	--azurite-bg: #000000;
+	--azurite-bg2: #000025;
+	--azurite-sec: #008cff;
+	--azurite-links: #ff00ff;
+	--azurite-home-icon: url('https://cdn.discordapp.com/attachments/651924190122868775/863983494899695616/tom-gainor-mohfRb6YJtQ-unsplash.jpeg?ex=65f7b355&is=65e53e55&hm=b2939f0450e8c31211e955ff61bef419ec9d2841d58acf9d00aa4c946e23a9d6&');
+	--watermark-filter-invert: 0%;
+	--watermark-filter-sepia: 50%;
+	--watermark-filter-saturate: 3000%;
+	--watermark-filter-hue-rotate: 100deg;
+	--watermark-filter-brightness: 100%;
+	--watermark-filter-contrast: 70%;
+	--azurite-emoji-picker-color: 100deg;
+	--avatar-radius: 25px;
+	--server-radius: 25px;
+  --msg-bg-radius: 25px;
+	--font: 'Righteous', cursive;
+}

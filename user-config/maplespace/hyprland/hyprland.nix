@@ -128,6 +128,7 @@ device:epic mouse V1 {
 # windowrule = float, ^(kitty)$
 
 windowrule = opacity 0.9 override 0.8 override, ^(vesktop)$
+windowrule = opacity 0.9 override 0.8 override, ^(discord)$
 
 # Example windowrule v2
 # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
