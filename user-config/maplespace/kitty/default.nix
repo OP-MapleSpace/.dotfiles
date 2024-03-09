@@ -16,6 +16,8 @@
       background = "#${config.colorScheme.palette.base00}";
       background_opacity = "0.8";
       background_blur = "1";
+
+      enabled_layouts = "grid";
     };
   };
 }

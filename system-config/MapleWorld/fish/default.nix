@@ -31,6 +31,7 @@
       nvpy = "nvim ~/.dotfiles/user-config/maplespace/python.nix";
       nvcf = "nvim ~/.dotfiles/system-config/MapleWorld/configuration.nix";
       nvhcf = "nvim ~/.dotfiles/system-config/MapleWorld/hardware-configuration.nix";
+      nvinit = "nvim ~/.dotfiles/user-config/maplespace/neovim/init.lua";
     };
 
   };

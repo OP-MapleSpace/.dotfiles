@@ -156,15 +156,10 @@ Plug 'andweeb/presence.nvim'
 Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/Quramy/tsuquyomi/'
 Plug 'https://github.com/leafgarland/typescript-vim'
-
--- Typescript
-Plug 'tpope/vim-fugitive'
-
--- Tmux config
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'https://github.com/arl/gitmux'
+Plug 'https://github.com/wuelnerdotexe/vim-astro'
 
 -- Git plugins
+Plug 'tpope/vim-fugitive'
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'rbong/vim-flog'
 Plug 'https://github.com/airblade/vim-gitgutter'
@@ -199,3 +194,6 @@ require('neorg').setup {
         },
     },
 }
+
+-- Vim Astro
+vim.g['astro_typescript'] = 'enable'

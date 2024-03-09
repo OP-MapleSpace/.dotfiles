@@ -229,7 +229,7 @@
       source-han-sans-japanese
       source-han-serif-japanese
       source-code-pro
-      #nerdfonts
+      nerdfonts
       fira
       fira-mono
       fira-code

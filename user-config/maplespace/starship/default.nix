@@ -3,7 +3,7 @@
   programs.starship.enableFishIntegration = true;
   programs.starship.settings = {
     add_newline = false;
-    format = "$username[@](#${config.colorScheme.palette.base04})$hostname [visiting](#${config.colorScheme.palette.base0B}) $directory$all $line_break[$status](bold)$character ";
+    format = "$username[@](#${config.colorScheme.palette.base04})$hostname [visiting](#${config.colorScheme.palette.base0B}) $directory $all $line_break[$status](bold)$character ";
     right_format = "$cmd_duration | $memory_usage | $battery ";
 
     battery.display = [

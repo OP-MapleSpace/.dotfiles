@@ -9,8 +9,9 @@
     ## hyprland/wayland stuff
     hyprpaper
     hyprpicker
-    pyprland
+    hyprshade
     hypridle
+    pyprland
     waybar
     eww
     swaylock-effects
@@ -119,6 +120,10 @@
     inkscape
     blender
     ffmpeg
+
+    ## science
+    gnome.gnome-calculator
+
   ];
 
   # Cursor settings

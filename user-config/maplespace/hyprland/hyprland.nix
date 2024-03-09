@@ -173,6 +173,7 @@ bindel = , XF86AudioPlay, exec, playerctl play-pause
 bindel = , XF86AudioNext, exec, playerctl next
 bindel = , XF86AudioPrev, exec, playerctl previous
 bindel = , XF86AudioStop, exec, playerctl stop
+bindel = , XF86Calculator, exec, gnome-calculator
 
 # Working with windows
 bind = $mainMod, V, togglefloating,
@@ -291,7 +292,8 @@ windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 windowrulev2 = maxsize 1 1,class:^(xwaylandvideobridge)$
 windowrulev2 = noblur,class:^(xwaylandvideobridge)$
 
-# Wallpaper
-#exec-once = swww init && swww img ~/.dotfiles/wallpaper/SpaceAce.png
-exec-once = hyprpaper
+# Hyprland apps
+exec-once = hyprpaper # Wallpaper
+exec = hyprshade auto # Shader; blue light filter
+exec-once = hypridle # Idle daemon
 ''
