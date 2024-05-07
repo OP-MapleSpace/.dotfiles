@@ -59,7 +59,6 @@ decoration {
     # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
     rounding = 15
-    multisample
 
     active_opacity = 1.0
     inactive_opacity = 0.8
@@ -120,9 +119,9 @@ misc {
 
 # Example per-device config
 # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
-device:epic mouse V1 {
-    sensitivity = -0.5
-}
+#device:epic mouse V1 {
+#    sensitivity = -0.5
+#}
 
 # Example windowrule v1
 # windowrule = float, ^(kitty)$
@@ -187,7 +186,7 @@ bind = $shMod, M, fullscreen, 0
 bind = $mainMod, M, fullscreen, 1
 bind = $altMod, M, fullscreen, 2
 bind = $ctrlMod, M, fakefullscreen
-## Minimizing, brought to you by https://github.com/hyprland-community/pyprland/wiki/toggle_special
+# # Minimizing, brought to you by https://github.com/hyprland-community/pyprland/wiki/toggle_special
 bind = $mainMod SHIFT, N, togglespecialworkspace, stash # toggles "stash" special workspace visibility 
 bind = $mainMod, N, exec, pypr toggle_special stash # moves window to/from the "stash" workspace
 
@@ -214,7 +213,7 @@ binde = , down, resizeactive, 0 10
 bind = , escape, submap, reset # reset to the global submap
 submap = reset
 
-/*
+
 #plugins
 plugin {
     #split-monitor-workspaces {
@@ -240,7 +239,7 @@ plugin {
         click_in_cursor = 1 # when click to jump,the target windwo is find by cursor, not the current foucus window.
         hight_of_titlebar = 0 # height deviation of title bar height
     }
-} */
+}
 exec-once = pypr
 
 # Switch workspaces, using plugin https://github.com/Duckonaut/split-monitor-workspaces
