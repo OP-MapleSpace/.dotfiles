@@ -69,6 +69,7 @@
   xdg.configFile."eww/main.py".source = ./eww/main.py;
   xdg.configFile."hypr/hyprpaper.conf".source = ./hyprland/hyprpaper.conf;
   xdg.configFile."hypr/hyprshade.toml".source = ./hyprland/hyprshade.toml;
+  xdg.configFile."hypr/hypridle.conf".source = ./hyprland/hypridle.conf;
   xdg.configFile."hypr/pyprland.toml".source = ./hyprland/pyprland.toml;
   xdg.configFile."nvim/init.lua".source = ./neovim/init.lua;
   xdg.configFile."swaylock/config".source = ./swaylock/config;

@@ -1,7 +1,7 @@
 { lib, ... }:
 
 {
-  services.xserver.displayManager.sddm.sugarCandyNix = {
+services.xserver.displayManager.sddm.sugarCandyNix = {
     enable = true; # This enables SDDM automatically and set its theme to
                      # "sddm-sugar-candy-nix"
     settings = {

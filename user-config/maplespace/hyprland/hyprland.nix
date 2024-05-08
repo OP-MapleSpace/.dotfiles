@@ -154,11 +154,11 @@ bind = $mainMod, R, exec, anyrun
 bind = $altMod, C, exec, vesktop
 
 # Color picker
-bind = $ctrlMod, P, exec, hyprpicker
+bind = $ctrlMod, P, exec, hyprpicker -a
 
 # Screenshot tool
-bind = $shMod, s, exec, grim -g "$(slurp)" - | convert - -shave 1x1 PNG:- | swappy -f - # area capture
-bind = , PRINT, exec, grim -t png ~/Sync/Pictures/Screenshots/$(date +'%s.png') # full window capture
+bind = $shMod, s, exec, hyprshade off && grim -g "$(slurp)" - | convert - -shave 1x1 PNG:- | swappy -f - # area capture
+bind = , PRINT, exec, hyprshade off && grim -t png ~/Sync/Pictures/Screenshots/$(date +'%s.png') # full window capture
 # Allowing Swappy to edit image from clipboard
 bind = $ctrlMod, s, exec, wl-paste | swappy -f -
 
@@ -179,13 +179,14 @@ bind = $mainMod, V, togglefloating,
 bind = $altMod, V, pseudo, # dwindle
 bind = $mainMod, D, togglesplit, # dwindle
 bind = $mainMod, P, pin
-bind = $mainMod, C, killactive,
-bind = $mainMod, Q, exit,
+bind = $mainMod, C, killactive
+bind = $mainMod, Q, exit
 bind = $mainMod, E, exec, pypr expose
 bind = $shMod, M, fullscreen, 0
 bind = $mainMod, M, fullscreen, 1
 bind = $altMod, M, fullscreen, 2
 bind = $ctrlMod, M, fakefullscreen
+
 # # Minimizing, brought to you by https://github.com/hyprland-community/pyprland/wiki/toggle_special
 bind = $mainMod SHIFT, N, togglespecialworkspace, stash # toggles "stash" special workspace visibility 
 bind = $mainMod, N, exec, pypr toggle_special stash # moves window to/from the "stash" workspace
@@ -199,8 +200,8 @@ binde = $mainMod, left, movefocus, l
 binde = $mainMod, right, movefocus, r
 binde = $mainMod, up, movefocus, u
 binde = $mainMod, down, movefocus, d
-binde = ALT, Tab, cyclenext
-binde = ALTSHIFT, Tab, cyclenext, prev
+binde = ALT, Tab, cyclenext, prev
+binde = ALTSHIFT, Tab, cyclenext
 binde = $mainMod, TAB, workspace, previous
 
 # Resize
@@ -215,32 +216,32 @@ submap = reset
 
 
 #plugins
-plugin {
+#plugin {
     #split-monitor-workspaces {
     #    count = 5
     #}
-    hycov {
-        overview_gappo = 60 # gaps width from screen edge
-        overview_gappi = 24 # gaps width from clients
-        enable_hotarea = 1 # enable mouse cursor hotarea, when cursor enter hotarea, it will toggle overview    
-        hotarea_monitor = all # monitor name which hotarea is in, default is all
-        hotarea_pos = 1 # position of hotarea (1: bottom left, 2: bottom right, 3: top left, 4: top right)
-        hotarea_size = 10 # hotarea size, 10x10
-        swipe_fingers = 4 # finger number of gesture,move any directory
-        move_focus_distance = 100 # distance for movefocus,only can use 3 finger to move 
-        enable_gesture = 0 # enable gesture
-        auto_exit = 1 # enable auto exit when no client in overview
-        auto_fullscreen = 0 # auto make active window maximize after exit overview
-        only_active_workspace = 0 # only overview the active workspace
-        only_active_monitor = 0 # only overview the active monitor
-        enable_alt_release_exit = 0 # alt swith mode arg,see readme for detail
-        alt_replace_key = Alt_L # alt swith mode arg,see readme for detail
-        alt_toggle_auto_next = 0 # auto focus next window when toggle overview in alt swith mode
-        click_in_cursor = 1 # when click to jump,the target windwo is find by cursor, not the current foucus window.
-        hight_of_titlebar = 0 # height deviation of title bar height
-    }
-}
-exec-once = pypr
+
+    #hycov {
+    #    overview_gappo = 60 # gaps width from screen edge
+    #    overview_gappi = 24 # gaps width from clients
+    #    enable_hotarea = 1 # enable mouse cursor hotarea, when cursor enter hotarea, it will toggle overview    
+    #    hotarea_monitor = all # monitor name which hotarea is in, default is all
+    #    hotarea_pos = 1 # position of hotarea (1: bottom left, 2: bottom right, 3: top left, 4: top right)
+    #    hotarea_size = 10 # hotarea size, 10x10
+    #    swipe_fingers = 4 # finger number of gesture,move any directory
+    #    move_focus_distance = 100 # distance for movefocus,only can use 3 finger to move 
+    #    enable_gesture = 0 # enable gesture
+    #    auto_exit = 1 # enable auto exit when no client in overview
+    #    auto_fullscreen = 0 # auto make active window maximize after exit overview
+    #    only_active_workspace = 0 # only overview the active workspace
+    #    only_active_monitor = 0 # only overview the active monitor
+    #    enable_alt_release_exit = 0 # alt swith mode arg,see readme for detail
+    #    alt_replace_key = Alt_L # alt swith mode arg,see readme for detail
+    #    alt_toggle_auto_next = 0 # auto focus next window when toggle overview in alt swith mode
+    #    click_in_cursor = 1 # when click to jump,the target windwo is find by cursor, not the current foucus window.
+    #    hight_of_titlebar = 0 # height deviation of title bar height
+    #}
+#}
 
 # Switch workspaces, using plugin https://github.com/Duckonaut/split-monitor-workspaces
 bind = $mainMod, 1, workspace, 1

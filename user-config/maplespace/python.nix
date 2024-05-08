@@ -5,6 +5,7 @@ let
     matplotlib
     scipy
     #rocketpy
+    #qiskit
     pillow
     pandas
     #CoolProp

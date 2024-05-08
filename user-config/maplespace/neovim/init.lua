@@ -87,6 +87,23 @@ Plug 'junegunn/vim-easy-align'
 -- Commenting
 Plug 'https://github.com/tpope/vim-commentary'
 
+-- LSP stuff + Autocompletion
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'kabouzeid/nvim-lspinstall'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'VonHeikemen/lsp-zero.nvim'
+
+-- Snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+
 -- Treesitter for many different plugins
 Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
@@ -94,10 +111,6 @@ Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 Plug 'https://github.com/alec-gibson/nvim-tetris'
 Plug 'https://github.com/seandewar/nvimesweeper'
 Plug 'johngrib/vim-game-snake'
-
--- LSP stuff
-Plug 'neovim/nvim-lspconfig'
-Plug 'kabouzeid/nvim-lspinstall'
 
 -- Yuck (for EWW)
 Plug 'https://github.com/elkowar/yuck.vim'
@@ -110,14 +123,11 @@ Plug 'gfanto/fzf-lsp.nvim'
 Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
 
 -- Lua stuff I think
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'https://github.com/nvim-lua/plenary.nvim'
 Plug 'tjdevries/nlua.nvim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'euclidianAce/BetterLua.vim'
 Plug 'tjdevries/manillua.nvim'
-
 
 -- MATLAB
 Plug 'https://github.com/yinflying/matlab.vim'
@@ -157,6 +167,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/Quramy/tsuquyomi/'
 Plug 'https://github.com/leafgarland/typescript-vim'
 Plug 'https://github.com/wuelnerdotexe/vim-astro'
+Plug 'https://github.com/udalov/kotlin-vim'
 
 -- Git plugins
 Plug 'tpope/vim-fugitive'
@@ -197,3 +208,31 @@ require('neorg').setup {
 
 -- Vim Astro
 vim.g['astro_typescript'] = 'enable'
+
+-- Set up nvim-cmp.
+local lsp_zero = require('lsp-zero')
+
+lsp_zero.on_attach(function(client, bufnr)
+    -- see :help lsp-zero-keybindings
+    -- to learn the available actions
+    lsp_zero.default_keymaps({buffer = bufnr})
+end)
+
+-- here you can setup the language servers
+local lsp_zero = require('lsp-zero')
+
+lsp_zero.on_attach(function(client, bufnr)
+    -- see :help lsp-zero-keybindings
+    -- to learn the available actions
+    lsp_zero.default_keymaps({buffer = bufnr})
+end)
+
+-- to learn how to use mason.nvim with lsp-zero
+-- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guide/integrate-with-mason-nvim.md
+require('mason').setup({})
+require('mason-lspconfig').setup({
+    ensure_installed = {'arduino-language-server', 'astro', 'clangd', 'cssls', 'cssmodules_ls', 'css_variables', 'eslint', 'gdscript', 'gdshader_lsp', 'gradle_ls', 'groovyls', 'java_language_server', 'kotlin_language_server', 'ltex', 'lua-ls', 'matlab_ls', 'nixd', 'pyright', 'qml_lsp', 'r_language_server', 'svelte', 'tailwindcss', 'tsserver'},
+    handlers = {
+        lsp_zero.default_setup,
+    },
+})

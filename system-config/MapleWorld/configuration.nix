@@ -16,6 +16,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   networking = {
     hostName = "MapleWorld"; # Define your hostname.
