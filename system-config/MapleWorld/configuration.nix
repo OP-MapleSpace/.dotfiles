@@ -98,8 +98,9 @@
   # Enable X11 and its stuff.
   services.xserver = {
     enable = true;
-    libinput.enable = true;
   };
+  services.libinput.enable = true;
+
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
