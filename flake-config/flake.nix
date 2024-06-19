@@ -23,14 +23,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    anyrun = {
+    # unmaintained so not using it anymore
+    /*anyrun = {
       url = github:Kirottu/anyrun;
       inputs.nixpkgs.follows = "nixpkgs";
     };
     anyrun-nixos-options = {
       url = github:n3oney/anyrun-nixos-options;
       inputs.nixpkgs.follows = "nixpkgs";
-    };
+    };*/
 
     firefox = {
       url = github:nix-community/flake-firefox-nightly;
@@ -49,7 +50,7 @@
   };
 
 
-  outputs = { self, nixpkgs, home-manager, hyprland, sddm-sugar-candy-nix, anyrun, firefox, split-monitor-workspaces, hycov, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, sddm-sugar-candy-nix, /*anyrun, */firefox, split-monitor-workspaces, hycov, ... }@inputs:
     let
       system = "x86_64-linux";
       specialArgs = inputs;
@@ -90,11 +91,14 @@
       };
       substituters = [
         "https://hyprland.cachix.org"
-        "https://anyrun.cachix.org"
+        "https://cache.nixos.org/"
+        "https://nix-community.cachix.org"
+        #"https://anyrun.cachix.org"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        #"anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       ];
     };
 

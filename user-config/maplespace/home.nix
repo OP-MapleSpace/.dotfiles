@@ -2,13 +2,12 @@
 
 {
   imports = [
-    inputs.anyrun.homeManagerModules.default
+    #inputs.anyrun.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
 
     ./packages.nix
     ./python.nix
-
-    ./anyrun
+    #./anyrun
     ../../system-config/MapleWorld/fish
     #./eww
     ./hyprland
@@ -16,7 +15,7 @@
     ./kitty
     ./obs-studio
     ./starship
-    #./swayidle
+    ./swayidle
     ./syncthing
   ];
 
@@ -29,6 +28,9 @@
       "org/virt-manager/virt-manager/connections" = {
         autoconnect = ["qemu:///system"];
         uris = ["qemu:///system"];
+        color-scheme = "prefer-dark";
+        #prefers-color-scheme = true;
+        gtk-application-prefer-dark-theme=1;
       };
     };
   };
@@ -57,6 +59,37 @@
     };
   };
 
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "BeautyLine";
+      package = pkgs.beauty-line-icon-theme;
+    };
+    cursorTheme = {
+      name = "Afterglow-Recolored-Catppuccin-Sapphire";
+      package = pkgs.afterglow-cursors-recolored;
+    };
+    theme = {
+      name = "Ant-Nebula";
+      package = pkgs.ant-nebula-theme;
+    };
+
+    gtk2.extraConfig = "gtk-application-prefer-dark-theme=1";
+    gtk3 = {
+      extraConfig.gtk-application-prefer-dark-theme = 1;
+      extraCss = "prefers-color-scheme = dark";
+    };
+    gtk4 = {
+      extraConfig.gtk-application-prefer-dark-theme = 1;
+      extraCss = "prefers-color-scheme = dark";
+    };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk";
+  };
+
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 34560000;
@@ -64,15 +97,27 @@
     enableSshSupport = true;
   };
 
-  xdg.configFile."eww/eww.yuck".source = ./eww/eww.yuck;
-  xdg.configFile."eww/eww.scss".source = ./eww/eww.scss;
-  xdg.configFile."eww/main.py".source = ./eww/main.py;
-  xdg.configFile."hypr/hyprpaper.conf".source = ./hyprland/hyprpaper.conf;
-  xdg.configFile."hypr/hyprshade.toml".source = ./hyprland/hyprshade.toml;
-  xdg.configFile."hypr/hypridle.conf".source = ./hyprland/hypridle.conf;
-  xdg.configFile."hypr/pyprland.toml".source = ./hyprland/pyprland.toml;
-  xdg.configFile."nvim/init.lua".source = ./neovim/init.lua;
-  xdg.configFile."swaylock/config".source = ./swaylock/config;
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal
+        xdg-desktop-portal-gtk
+      ];
+      config.common.default = "*";
+    };
+    configFile = {
+      "eww/eww.yuck".source = ./eww/eww.yuck;
+      "eww/eww.scss".source = ./eww/eww.scss;
+      "eww/main.py".source = ./eww/main.py;
+      "hypr/hyprpaper.conf".source = ./hyprland/hyprpaper.conf;
+      "hypr/hyprshade.toml".source = ./hyprland/hyprshade.toml;
+      "hypr/hypridle.conf".source = ./hyprland/hypridle.conf;
+      "hypr/pyprland.toml".source = ./hyprland/pyprland.toml;
+      "nvim/init.lua".source = ./neovim/init.lua;
+      "swaylock/config".source = ./swaylock/config;
+    };
+  };
 
   # You can update Home Manager without changing this value
   home.stateVersion = "22.11";

@@ -1,4 +1,4 @@
-name: rocketsimpy
+name: pyscienv
 channels:
   - conda-forge
 dependencies:
@@ -9,3 +9,6 @@ dependencies:
   - pandas
   - CoolProp
   - pyyaml
+  - qiskit
+  - qiskit-ibm-runtime
+  - pylatexenc

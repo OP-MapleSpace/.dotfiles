@@ -11,7 +11,6 @@
     hyprpicker
     hyprshade
     hypridle
-    pyprland
     waybar
     eww
     swaylock-effects
@@ -21,10 +20,14 @@
     grim
     slurp
     swappy
-
+    rofi-wayland
+    rofi-calc
+    rofi-bluetooth
+    rofi-power-menu
+    rofimoji
 
     ## browsers
-    floorp
+    #floorp
     brave
 
     ## discord :skull:
@@ -161,12 +164,12 @@
     "minecraft-launcher"
   ];
 
-  nixpkgs.overlays =
+/*  nixpkgs.overlays =
     let
       myOverlay = self: super: {
         discord-canary = super.discord-canary.override { withOpenASAR = true; withVencord = true; };
       };
     in
-      [ myOverlay ];
+      [ myOverlay ];*/
 
 }

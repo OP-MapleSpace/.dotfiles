@@ -8,7 +8,6 @@
   imports =
     [
       ./hardware-configuration.nix # Include the results of the hardware scan
-
       ./firefox-nightly
       ./sddm
     ];
@@ -142,7 +141,7 @@
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
-    pulse.enable = true;  
+    pulse.enable = true;
     jack.enable = true;
   };
 

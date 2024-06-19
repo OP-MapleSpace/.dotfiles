@@ -7,7 +7,7 @@ let
     ];
     profile = ''
       set -e
-      export ENV_NAME="rocketsimpy"
+      export ENV_NAME="pyscienv"
       export MAMBA_ROOT_PREFIX=${builtins.getEnv "PWD"}/.mamba
       eval "$(micromamba shell hook --shell=dash | sed 's/complete / # complete/g')"
       micromamba create --yes -q -n $ENV_NAME
