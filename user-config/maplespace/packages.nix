@@ -76,7 +76,8 @@
     dunst
     git
     imagemagick
-    neofetch
+    hyfetch
+    fastfetch
     openssh
     fzf
     eza
@@ -90,6 +91,7 @@
     playerctl
     usbutils
     glibc
+    uwuify
     #etcher
 
     ## VMs, VPNs, remote, syncing
@@ -128,27 +130,6 @@
     gnome.gnome-calculator
 
   ];
-
-  # Cursor settings
-    home.pointerCursor =
-    let
-      getFrom = url: hash: name: {
-        name = name;
-        size = 48;
-        package = pkgs.runCommand "moveUp" {} ''
-          mkdir -p $out/share/icons
-          ln -s ${pkgs.fetchzip {
-            url = url;
-            hash = hash;
-          }} $out/share/icons/${name}
-        '';
-      };
-    in
-      getFrom
-        "https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.3/Bibata-Modern-Ice.tar.gz"
-        "sha256-9lDvV2dgGFrLy8Y55ZYbiTDiN0DscX8Uju5YGWUuWyE="
-        "Bibata-Modern-Ice";
-
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     #"discord-canary"

@@ -10,6 +10,7 @@
       ./hardware-configuration.nix # Include the results of the hardware scan
       ./firefox-nightly
       ./sddm
+      ./stylix.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -71,10 +72,10 @@
 
     # Open ports in the firewall.
     firewall = {
-      allowedTCPPortRanges = [ 
+      allowedTCPPortRanges = [
         { from = 1714; to = 1764; } # KDE Connect
       ];
-      allowedUDPPortRanges = [ 
+      allowedUDPPortRanges = [
         { from = 1714; to = 1764; } # KDE Connect
       ];
       allowedUDPPorts = [ 51820 ]; # 51820 = WireGuard
@@ -126,7 +127,7 @@
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
   environment.shells = with pkgs; [ fish ];
-  
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -217,7 +218,7 @@
   services.sshd.enable = true;
 
   # Enable OpenGL
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Fonts
   fonts = {
@@ -238,11 +239,11 @@
       comic-relief
       comfortaa
     ];
-    fontconfig.defaultFonts = {
-      serif = [ "Cascadia Code" "Source Han Serif" ];
-      sansSerif = [ "Quicksand" "Source Han Sans" ];
-      monospace = ["Cascadia Mono" "Fira Code" ];
-    };
+    #fontconfig.defaultFonts = {
+    #  serif = [ "Cascadia Code" "Source Han Serif" ];
+    #  sansSerif = [ "Quicksand" "Source Han Sans" ];
+    #  monospace = ["Cascadia Mono" "Fira Code" ];
+    #};
   };
 
 

@@ -6,32 +6,20 @@
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-colors.url = github:misterio77/nix-colors;
+    stylix.url = github:danth/stylix;
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     split-monitor-workspaces = {
       url = github:Duckonaut/split-monitor-workspaces;
       inputs.hyprland.follows = "hyprland";
     };
-    hycov={
-      url = github:DreamMaoMao/hycov;
-      inputs.hyprland.follows = "hyprland";
-    };
+
+    ags.url = github:Aylur/ags;
 
     sddm-sugar-candy-nix = {
-      url = gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix;
+      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # unmaintained so not using it anymore
-    /*anyrun = {
-      url = github:Kirottu/anyrun;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    anyrun-nixos-options = {
-      url = github:n3oney/anyrun-nixos-options;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };*/
 
     firefox = {
       url = github:nix-community/flake-firefox-nightly;
@@ -50,7 +38,7 @@
   };
 
 
-  outputs = { self, nixpkgs, home-manager, hyprland, sddm-sugar-candy-nix, /*anyrun, */firefox, split-monitor-workspaces, hycov, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, sddm-sugar-candy-nix, firefox, split-monitor-workspaces, stylix, ags, ... }@inputs:
     let
       system = "x86_64-linux";
       specialArgs = inputs;
@@ -72,7 +60,8 @@
             }
 
             hyprland.nixosModules.default
-            #{wayland.windowManager.hyprland.enable = true;}
+
+            stylix.nixosModules.stylix
 
             sddm-sugar-candy-nix.nixosModules.default
             {
@@ -85,7 +74,6 @@
 
             ../system-config/MapleWorld/configuration.nix
             ../system-config/MapleWorld/hardware-configuration.nix
-            # ...
           ];
         };
       };
@@ -93,12 +81,10 @@
         "https://hyprland.cachix.org"
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
-        #"https://anyrun.cachix.org"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        #"anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       ];
     };
 

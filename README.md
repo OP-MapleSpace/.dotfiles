@@ -12,6 +12,6 @@ If you have any tips or questions please feel free to tell/ask me!
     
 ## To-Do (in no order)
 - [ ] fix notifications
-- [ ] configure eww
-- [ ] configure anyrun
+- [ ] configure ags
+- [ ] configure rofi
 - [ ] configure zathura

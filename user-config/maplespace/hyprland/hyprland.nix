@@ -279,7 +279,7 @@ bindm = $mainMod, mouse:273, resizewindow
 # trigger when the switch is turning on (i.e., lid closes)
 bindl=,switch:on:Lid Switch,exec,systemctl suspend
 # trigger when the switch is turning off (i.e., lid opens)
-bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "${laptop_screen}, 2560x1440, 0x0, 1.25"
+bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "${laptop_screen}, 2560x1440, 0x0, 1.25" && hyprshade auto
 
 # For screensharing
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP

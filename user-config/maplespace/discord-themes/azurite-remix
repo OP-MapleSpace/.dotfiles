@@ -11,14 +11,15 @@
 */
 
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Azurite/Azurite.theme.css');
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.cdnfonts.com/css/cascadia-code');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
 :root {
 	--azurite-bg: #000000;
 	--azurite-bg2: #000025;
 	--azurite-sec: #008cff;
-	--azurite-links: #ff00ff;
-	--azurite-home-icon: url('https://cdn.discordapp.com/attachments/651924190122868775/863983494899695616/tom-gainor-mohfRb6YJtQ-unsplash.jpeg?ex=65f7b355&is=65e53e55&hm=b2939f0450e8c31211e955ff61bef419ec9d2841d58acf9d00aa4c946e23a9d6&');
+	--azurite-links: #00ff00;
+	--azurite-home-icon: url('https://cdn.discordapp.com/attachments/651924190122868775/863983494899695616/tom-gainor-mohfRb6YJtQ-unsplash.jpeg');
 	--watermark-filter-invert: 0%;
 	--watermark-filter-sepia: 50%;
 	--watermark-filter-saturate: 3000%;
@@ -29,5 +30,5 @@
 	--avatar-radius: 25px;
 	--server-radius: 25px;
   --msg-bg-radius: 25px;
-	--font: 'Righteous', cursive;
+	--font: 'Cascadia Code', sans-serif;
 }
