@@ -13,5 +13,9 @@ If you have any tips or questions please feel free to tell/ask me!
 ## To-Do (in no order)
 - [ ] fix notifications
 - [ ] configure ags
+- - [ ] bar
+- - [ ] notifications
+- - [ ] runner
 - [ ] configure rofi
 - [ ] configure zathura
+- [ ] configure nixvim

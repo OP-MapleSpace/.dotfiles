@@ -1,20 +1,21 @@
 # thanks to Nathan for his help with this! https://github.com/Nathan13888/
 {
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = github:nix-community/home-manager;
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = github:danth/stylix;
+    stylix.url = "github:danth/stylix";
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    split-monitor-workspaces = {
-      url = github:Duckonaut/split-monitor-workspaces;
-      inputs.hyprland.follows = "hyprland";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ags.url = github:Aylur/ags;
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    ags.url = "github:Aylur/ags";
 
     sddm-sugar-candy-nix = {
       url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
@@ -22,7 +23,7 @@
     };
 
     firefox = {
-      url = github:nix-community/flake-firefox-nightly;
+      url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -38,7 +39,7 @@
   };
 
 
-  outputs = { self, nixpkgs, home-manager, hyprland, sddm-sugar-candy-nix, firefox, split-monitor-workspaces, stylix, ags, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, sddm-sugar-candy-nix, firefox, stylix, ags, nixvim, ... }@inputs:
     let
       system = "x86_64-linux";
       specialArgs = inputs;

@@ -7,10 +7,10 @@
     ./packages.nix
     ./python.nix
     ../../system-config/MapleWorld/fish
-    #./eww
     ./hyprland
     ./kdeconnect
     ./kitty
+    ./nixvim
     ./obs-studio
     ./starship
     ./stylix.nix
@@ -57,14 +57,11 @@
       config.common.default = "*";
     };
     configFile = {
-      "eww/eww.yuck".source = ./eww/eww.yuck;
-      "eww/eww.scss".source = ./eww/eww.scss;
-      "eww/main.py".source = ./eww/main.py;
       "hypr/hyprpaper.conf".source = ./hyprland/hyprpaper.conf;
       "hypr/hyprshade.toml".source = ./hyprland/hyprshade.toml;
       "hypr/hypridle.conf".source = ./hyprland/hypridle.conf;
-      "hypr/pyprland.toml".source = ./hyprland/pyprland.toml;
-      "nvim/init.lua".source = ./neovim/init.lua;
+      "mov-cli/config.toml".source = ./mov-cli/config.toml;
+      #"nvim/init.lua".source = ./neovim/init.lua;
       "swaylock/config".source = ./swaylock/config;
     };
   };

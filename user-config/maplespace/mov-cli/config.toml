@@ -1,0 +1,5 @@
+[mov-cli.plugins]
+test = "mov-cli-test"
+youtube = "mov-cli-youtube"
+files = "mov-cli-files"
+jelly = "mov-cli-jellyplex"

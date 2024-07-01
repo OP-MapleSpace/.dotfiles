@@ -78,7 +78,7 @@
       allowedUDPPortRanges = [
         { from = 1714; to = 1764; } # KDE Connect
       ];
-      allowedUDPPorts = [ 51820 ]; # 51820 = WireGuard
+      allowedUDPPorts = [ 51820 8129 ]; # 51820 = WireGuard, 8129 = Markdown Preview (NixVim)
     };
   };
 
@@ -108,6 +108,9 @@
   #   "eurosign:e";
   #   "caps:escape" # map caps to escape.
   # };
+
+  # Enable upower
+  services.upower.enable = true;
 
   # Enable GVFS
   services.gvfs.enable = true;
@@ -239,11 +242,6 @@
       comic-relief
       comfortaa
     ];
-    #fontconfig.defaultFonts = {
-    #  serif = [ "Cascadia Code" "Source Han Serif" ];
-    #  sansSerif = [ "Quicksand" "Source Han Sans" ];
-    #  monospace = ["Cascadia Mono" "Fira Code" ];
-    #};
   };
 
 

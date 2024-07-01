@@ -3,34 +3,34 @@
   programs.starship.enableFishIntegration = true;
   programs.starship.settings = {
     add_newline = false;
-    format = "$username[@](${config.lib.stylix.colors.withHashtag.base0F})$hostname [visiting](${config.lib.stylix.colors.withHashtag.base08}) $directory $all $line_break[$status](bold)$character ";
+    format = "$username[@](${config.lib.stylix.colors.withHashtag.base03})$hostname [visiting](${config.lib.stylix.colors.withHashtag.base0B}) $directory $all $line_break[$status](bold)$character ";
     right_format = "$cmd_duration | $memory_usage | $battery ";
 
     battery.display = [
       {
         threshold = 20;
-        style = "bold ${config.lib.stylix.colors.withHashtag.base0E}";
+        style = "bold ${config.lib.stylix.colors.withHashtag.base0F}";
         discharging_symbol = " ";
         charging_symbol = "⚡️ ";
       }
 
       {
         threshold = 30;
-        style = "bold ${config.lib.stylix.colors.withHashtag.base0B}";
+        style = "bold ${config.lib.stylix.colors.withHashtag.base08}";
         discharging_symbol = "  ";
         charging_symbol = "⚡️ ";
       }
 
       {
         threshold = 80;
-        style = "bold ${config.lib.stylix.colors.withHashtag.base08}";
+        style = "bold ${config.lib.stylix.colors.withHashtag.base0F}";
         discharging_symbol = "  ";
         charging_symbol = "⚡️ ";
       }
 
       {
         threshold = 100;
-        style = "bold ${config.lib.stylix.colors.withHashtag.base08}";
+        style = "bold ${config.lib.stylix.colors.withHashtag.base0F}";
         discharging_symbol = "  ";
         charging_symbol = "⚡️ ";
       }
@@ -38,21 +38,21 @@
 
     character = {
       # success_symbol = "[>\]\)====>](bold green)";
-      success_symbol = "[bee status: :\\)](bold ${config.lib.stylix.colors.withHashtag.base0B})";
+      success_symbol = "[bee status: :\\)](bold ${config.lib.stylix.colors.withHashtag.base08})";
       # error_symbol = "[XXXXXXX](bold red)";
-      error_symbol = "[bee status: :\\(](bold ${config.lib.stylix.colors.withHashtag.base0E})";
+      error_symbol = "[bee status: :\\(](bold ${config.lib.stylix.colors.withHashtag.base0F})";
     };
 
     cmd_duration = {
       show_milliseconds = true;
       format = "[$duration]($style)";
-      style = "bold ${config.lib.stylix.colors.withHashtag.base0B}";
+      style = "bold ${config.lib.stylix.colors.withHashtag.base08}";
     };
 
     hostname = {
       ssh_only = false;
       disabled = false;
-      style = "bold ${config.lib.stylix.colors.withHashtag.base09}";
+      style = "bold ${config.lib.stylix.colors.withHashtag.base0D}";
       format = "[$ssh_symbol$hostname]($style)";
     };
 

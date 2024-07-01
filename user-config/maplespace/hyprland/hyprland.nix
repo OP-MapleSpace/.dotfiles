@@ -17,10 +17,9 @@ xwayland {
 # Execute your favorite apps and scripts at launch
 env = GDK_SCALE,1.25
 env = XCURSOR_SIZE,24
-exec-once = waybar
+exec-once = ags -c ~/.dotfiles/user-config/maplespace/ags/config.js
 exec-once = wl-paste --watch cliphist store
 exec-once = udiskie &
-exec-once = dunst
 exec-once = nm-applet
 
 # Source a file (multi-file configs)
@@ -104,7 +103,7 @@ dwindle {
 
 master {
     # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-    new_is_master = true
+    new_on_top = true
 }
 
 gestures {
@@ -277,9 +276,12 @@ bindm = $mainMod, mouse:273, resizewindow
 
 # Lid opening and closing
 # trigger when the switch is turning on (i.e., lid closes)
-bindl=,switch:on:Lid Switch,exec,systemctl suspend
+bindl=,switch:off:Lid Switch,exec,systemctl suspend
 # trigger when the switch is turning off (i.e., lid opens)
-bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "${laptop_screen}, 2560x1440, 0x0, 1.25" && hyprshade auto
+bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "${laptop_screen}, 2560x1440, 0x0, 1.25" && hyprshade auto
+
+# Distrobox
+exec-once = distrobox-assemble create --file ~/.dotfiles/user-config/maplespace/distrobox.ini --replace
 
 # For screensharing
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP

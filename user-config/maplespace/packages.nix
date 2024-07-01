@@ -41,6 +41,7 @@
     lutris
     bottles
     ryujinx
+    vitetris
     #minecraft
 
     ## file stuff
@@ -61,19 +62,19 @@
 
     ## terminal
     kitty
-    neovim
     starship
     fish
-    tmux
     ### fun
     lolcat
     fortune
     cowsay
+    cmatrix
+    cbonsai
+    busybox
     ### utilities
     libguestfs
     htop
     btop
-    dunst
     git
     imagemagick
     hyfetch

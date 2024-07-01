@@ -156,9 +156,6 @@ Plug ('ms-jpq/chadtree', {['do'] = 'python3 -m chadtree deps'})
 -- Tags viewer
 Plug 'https://github.com/preservim/tagbar'
 
--- File viewer but with symbol outlines
-Plug 'https://github.com/simrat39/symbols-outline.nvim'
-
 -- Discord Rich Presence (for the flex, of course)
 Plug 'andweeb/presence.nvim'
 
