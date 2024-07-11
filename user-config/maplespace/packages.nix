@@ -29,6 +29,10 @@
     ## browsers
     #floorp
     brave
+	lynx
+
+	# email
+	thunderbird
 
     ## discord :skull:
     discord-canary
@@ -63,7 +67,17 @@
     ## terminal
     kitty
     starship
+    ### fish
     fish
+    fishPlugins.async-prompt
+    fishPlugins.autopair
+    fishPlugins.bass
+    fishPlugins.colored-man-pages
+    fishPlugins.fzf-fish
+    fishPlugins.puffer
+    fishPlugins.sponge
+    fishPlugins.z
+
     ### fun
     lolcat
     fortune
@@ -81,6 +95,7 @@
     fastfetch
     openssh
     fzf
+    fd
     eza
     bat
     ripgrep

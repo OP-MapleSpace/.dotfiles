@@ -1,5 +1,26 @@
+[mov-cli]
+player = "mpv"
+hide_ip = true
+quality = "qhd"
+
+[mov-cli.ui]
+fzf = true
+preview = true
+display_quality = true
+
+[mov-cli.scrapers]
+default = "youtube"
+
 [mov-cli.plugins]
 test = "mov-cli-test"
 youtube = "mov-cli-youtube"
 files = "mov-cli-files"
 jelly = "mov-cli-jellyplex"
+films = "film-central"
+
+[mov-cli.downloads]
+save_path = "~/Sync/Videos/yt/"
+yt_dlp = true
+
+[mov-cli.subtitles]
+language = "en"

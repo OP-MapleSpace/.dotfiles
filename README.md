@@ -19,3 +19,7 @@ If you have any tips or questions please feel free to tell/ask me!
 - [ ] configure rofi
 - [ ] configure zathura
 - [ ] configure nixvim
+
+## Acknowledgements
+Thank you so much to [@Nathan13888](https://github.com/Nathan13888) for helping me get started w/NixOS, nix flakes, home-manager, etc
+Thank you so much to [@PacificViking](https://github.com/PacificViking) for helping me with my problems

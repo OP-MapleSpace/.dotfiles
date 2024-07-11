@@ -4,13 +4,9 @@
   # colorschemes.ron.enable = true; # Colorscheme Ron
   programs.nixvim = {
     plugins = {
-      neocord.enable = true; # Discord Rich Presence (for the flex, of course)
-
-      headlines.enable = true;
-      image.enable = true;
-
     ## Linting, Syntax, Autopairing, Autocomplete, etc. ##
       ts-autotag.enable = true; # Autotag
+      nvim-autopairs.enable = true; # Autopair
 
       # Snippets + Autocompletion
       luasnip = {
@@ -27,8 +23,8 @@
         autoEnableSources = true;
       settings = {
           mapping = {
-            "<down>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
-            "<up>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+            "<M-down>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+            "<M-up>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
             "<cr>" = "cmp.mapping.confirm({ select = true })";
           };
           sources = [
@@ -123,14 +119,14 @@
           "python"
           "rust"
         ];
-        folding = true;
+        folding = false;
         indent = true;
         nixGrammars = true;
         nixvimInjections = true;
       };
 
       ## Programming Stuff ##
-      # Markdown Preview
+      # Markdown
       markdown-preview = {
         enable = true;
         settings = {
@@ -140,6 +136,7 @@
           theme = "dark";
         };
       };
+      headlines.enable = true; # Markdown Headline Highlighter
 
       # Git
       fugitive.enable = true;
@@ -155,7 +152,11 @@
         enable = true;
         theme = "Startify";
       };
-      noice.enable = true; # Funny command line thing
+      noice.enable = true; # Funny command line things
+	  
+	  ## Other ##
+	  neocord.enable = true; # Discord Rich Presence (for the flex, of course)
+	  image.enable = true; # image thing
     };
 
     ## Extras ##

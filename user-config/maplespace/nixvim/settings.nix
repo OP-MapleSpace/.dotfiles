@@ -2,6 +2,7 @@
   programs.nixvim = {
     clipboard = {
       providers.wl-copy.enable = true;
+	  register = "unnamedplus";
     };
 
     opts = {
@@ -10,6 +11,7 @@
       list = true; # Enable List
 
       # Indents
+	  expandtab = true;
       tabstop = 4;
       shiftwidth = 4;
       softtabstop = 4;

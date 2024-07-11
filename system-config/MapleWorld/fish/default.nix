@@ -33,7 +33,7 @@
       nvhcf = "nvim ~/.dotfiles/system-config/MapleWorld/hardware-configuration.nix";
       nvinit = "nvim ~/.dotfiles/user-config/maplespace/neovim/init.lua";
 
-      pymov = "nix-shell ~/py-mov-cli/shell.nix --command 'fish'";
+      pymov = "nix-shell ~/.dotfiles/python-env/py-mov-cli/shell.nix --command 'fish'";
 
       starwars = "telnet towel.blinkenlights.nl";
     };

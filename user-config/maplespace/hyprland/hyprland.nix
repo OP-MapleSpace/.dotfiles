@@ -276,9 +276,9 @@ bindm = $mainMod, mouse:273, resizewindow
 
 # Lid opening and closing
 # trigger when the switch is turning on (i.e., lid closes)
-bindl=,switch:off:Lid Switch,exec,systemctl suspend
+bindl=,switch:on:Lid Switch,exec,systemctl suspend
 # trigger when the switch is turning off (i.e., lid opens)
-bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "${laptop_screen}, 2560x1440, 0x0, 1.25" && hyprshade auto
+bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "${laptop_screen}, 2560x1440, 0x0, 1.25" && hyprshade auto
 
 # Distrobox
 exec-once = distrobox-assemble create --file ~/.dotfiles/user-config/maplespace/distrobox.ini --replace

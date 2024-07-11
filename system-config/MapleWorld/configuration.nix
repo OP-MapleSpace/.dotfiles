@@ -188,14 +188,15 @@
       # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
     };
+    waydroid.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.maplespace = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "docker" "input" "libvirtd" ];
-    packages = with pkgs; [
-    ];
+    #packages = with pkgs; [
+    #];
   };
 
   # List packages installed in system profile. To search, run:
