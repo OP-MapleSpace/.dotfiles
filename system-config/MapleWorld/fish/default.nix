@@ -1,4 +1,3 @@
-{pkgs, lib, ...}: 
 {
   programs.fish = {
     enable = true;
@@ -34,6 +33,8 @@
       nvinit = "nvim ~/.dotfiles/user-config/maplespace/neovim/init.lua";
 
       pymov = "nix-shell ~/.dotfiles/python-env/py-mov-cli/shell.nix --command 'fish'";
+
+      restart = "systemctl reboot";
 
       starwars = "telnet towel.blinkenlights.nl";
     };

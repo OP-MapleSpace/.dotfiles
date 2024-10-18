@@ -34,29 +34,25 @@
 	# email
 	thunderbird
 
-    ## discord :skull:
+    ## social media apps
     discord-canary
+    dissent
     vesktop
-    discordchatexporter-cli
     element-desktop
+    freetube
 
-    ## gaming!!!
-    steam
-    lutris
-    bottles
-    ryujinx
-    vitetris
-    #minecraft
+    # Productivity
+    super-productivity
 
     ## file stuff
     lf
-    cinnamon.nemo-with-extensions
+    nemo-with-extensions
     udiskie
     onlyoffice-bin
     libreoffice
-    zathura
+    #zathura
     xournalpp
-    gnome3.adwaita-icon-theme # xournal++ needs this for some reason
+    adwaita-icon-theme # xournal++ needs this for some reason
     feh
     mpv
     mpd
@@ -69,7 +65,6 @@
     starship
     ### fish
     fish
-    fishPlugins.async-prompt
     fishPlugins.autopair
     fishPlugins.bass
     fishPlugins.colored-man-pages
@@ -77,7 +72,6 @@
     fishPlugins.puffer
     fishPlugins.sponge
     fishPlugins.z
-
     ### fun
     lolcat
     fortune
@@ -86,10 +80,12 @@
     cbonsai
     busybox
     ### utilities
+    xdg-desktop-portal-hyprland
     libguestfs
     htop
     btop
     git
+    gh
     imagemagick
     hyfetch
     fastfetch
@@ -108,6 +104,8 @@
     usbutils
     glibc
     uwuify
+    #comma
+    bottles
     #etcher
 
     ## VMs, VPNs, remote, syncing
@@ -123,7 +121,7 @@
 
     ## kde
     krita
-    kalzium
+    #kalzium
     kdeconnect
     kdenlive
     kitty
@@ -135,6 +133,7 @@
     lua
     gfortran
     jq
+    julia-bin
 
     ## media
     gimp
@@ -143,7 +142,7 @@
     ffmpeg
 
     ## science
-    gnome.gnome-calculator
+    gnome-calculator
 
   ];
 
@@ -159,6 +158,10 @@
     "cudatoolkit"
     "steam" "steam-run" "steam-original"
     "minecraft-launcher"
+  ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "jitsi-meet-1.0.8043"
   ];
 
 /*  nixpkgs.overlays =

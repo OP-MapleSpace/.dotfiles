@@ -12,11 +12,14 @@
 
       # Indents
 	  expandtab = true;
-      tabstop = 4;
-      shiftwidth = 4;
+      tabstop = 8;
+      shiftwidth = 2;
       softtabstop = 4;
       autoindent = true;
       smartindent = true;
+
+      # Smooth scrolling
+      smoothscroll= true;
 
       # Case Handling
       ignorecase = true;
@@ -43,7 +46,5 @@
       filetype = "on";
       termguicolors = true;
     };
-
-    globals.mapleader = ";"; # Sets Leader Key
   };
 }

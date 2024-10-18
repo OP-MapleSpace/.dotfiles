@@ -1,26 +1,20 @@
-{ inputs, pkgs, config, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    inputs.ags.homeManagerModules.default
-
     ./packages.nix
-    ./python.nix
     ../shared/stylix.nix
     ../../system-config/MapleWorld/fish
-    ./hyprland
     ../shared/kdeconnect
     ../shared/kitty
     ../shared/nixvim
-    ./obs-studio
     ./starship
-    #./swayidle
     ../shared/syncthing
   ];
 
   programs.home-manager.enable = true;
-  home.username = "maplespace";
-  home.homeDirectory = "/home/maplespace";
+  home.username = "l";
+  home.homeDirectory = "/home/l";
 
   qt.enable = true;
   gtk.enable = true;
@@ -42,17 +36,6 @@
     enableSshSupport = true;
   };
 
-  programs.ags = {
-    enable = true;
-    configDir = ./ags;
-  };
-
-  programs.zathura.extraConfig =
-  builtins.readFile (config.scheme {
-    use-ifd = "auto";
-    templateRepo = inputs.base16-zathura; target = "recolor";
-  });
-
   xdg = {
     portal = {
       enable = true;
@@ -63,12 +46,8 @@
       config.common.default = "*";
     };
     configFile = {
-      "hypr/hyprpaper.conf".source = ./hyprland/hyprpaper.conf;
-      "hypr/hyprshade.toml".source = ./hyprland/hyprshade.toml;
-      "hypr/hypridle.conf".source = ./hyprland/hypridle.conf;
       "mov-cli/config.toml".source = ./mov-cli/config.toml;
       #"nvim/init.lua".source = ./neovim/init.lua;
-      "swaylock/config".source = ./swaylock/config;
     };
   };
 

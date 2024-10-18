@@ -4,6 +4,8 @@
   # colorschemes.ron.enable = true; # Colorscheme Ron
   programs.nixvim = {
     plugins = {
+      ## Icons
+      web-devicons.enable = true;
     ## Linting, Syntax, Autopairing, Autocomplete, etc. ##
       ts-autotag.enable = true; # Autotag
       nvim-autopairs.enable = true; # Autopair
@@ -11,7 +13,7 @@
       # Snippets + Autocompletion
       luasnip = {
         enable = true;
-        extraConfig = {
+        settings = {
           enable_autosnippets = true;
           store_selection_keys = "<M-s>";
         };
@@ -21,11 +23,12 @@
       cmp = {
         enable = true;
         autoEnableSources = true;
-      settings = {
+        settings = {
           mapping = {
             "<M-down>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
             "<M-up>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
-            "<cr>" = "cmp.mapping.confirm({ select = true })";
+            "<M-cr>" = "cmp.mapping.confirm({ select = true })";
+            "<C-e>" = "cmp.mapping.close()";
           };
           sources = [
             {name = "buffer";}
@@ -49,6 +52,8 @@
         };
       };
       #codeium-vim.enable = true;
+      undotree.enable = true;
+      barbar.enable = true; # better tabs
 
       # lsp config
       lsp = {
@@ -61,22 +66,18 @@
           clangd.enable = true; # C
           cssls.enable = true; # CSS
           dockerls.enable = true; # Docker
-          #fish_lsp.enable = true; # Fish shell
-          gdscript.enable = true; # GDScript (Godot)
+          #gdscript.enable = true; # GDScript (Godot)
           gopls.enable = true; # GO
-          #gradle_ls.enable = true; # Gradle (Java)
-          html.enable = true; # HTML
-          java-language-server.enable = true; # Java
-          julials.enable = true; # Julia
-          kotlin-language-server.enable = true; # Kotlin
-          lua-ls.enable = true; # Lua
-          #matlab_ls.enable = true; # MATLAB
-          nil-ls.enable = true; # Nix
+          #html.enable = true; # HTML
+          java_language_server.enable = true; # Java
+          #julials.enable = true; # Julia
+          kotlin_language_server.enable = true; # Kotlin
+          lua_ls.enable = true; # Lua
+          nil_ls.enable = true; # Nix
           pyright.enable = true; # Python
-          #qml-lsp.enable = true; # QML
-          r-language-server.enable = true; # R
-          ruff-lsp.enable = true; # Rust for Python(?)
-          rust-analyzer = { # Rust
+          #r_language_server.enable = true; # R
+          ruff_lsp.enable = true; # Rust for Python(?)
+          rust_analyzer = { # Rust
             enable = true;
             installRustc = true;
             installCargo = true;
@@ -86,9 +87,9 @@
           taplo.enable = true; # TOML
           tailwindcss.enable = true; # Tailwind CSS
           texlab.enable = true; # LaTeX
-          tsserver.enable = true; # TypeScript
-          typos-lsp.enable = true; # Spelling
-          vuels.enable = true; # Vue JS
+          ts_ls.enable = true; # TypeScript
+          typos_lsp.enable = true; # Spelling
+          #vuels.enable = true; # Vue JS
           yamlls.enable = true; # YAML
         };
         keymaps.lspBuf = {
@@ -96,7 +97,7 @@
           "gr" = "references";
           "gt" = "type_definition";
           "gi" = "implementation";
-          "k" = "hover";
+          "gk" = "hover";
         };
       };
       lsp-lines = {
@@ -109,18 +110,10 @@
       # treesitter config
       treesitter = {
         enable = true;
-        ensureInstalled = [
-          "astro"
-          "html"
-          "java"
-          "javascript"
-          "lua"
-          "nix"
-          "python"
-          "rust"
-        ];
         folding = false;
-        indent = true;
+        settings = {
+          indent.enable = true;
+        };
         nixGrammars = true;
         nixvimInjections = true;
       };
@@ -131,12 +124,18 @@
         enable = true;
         settings = {
           browser = "firefox";
-          echo_preview_url = true;
+          echo_preview_url = 1;
           port = "8129";
           theme = "dark";
         };
       };
       headlines.enable = true; # Markdown Headline Highlighter
+
+      # LaTeX Previewer
+      vimtex = {
+        enable = true;
+        settings.view_method = "zathura";
+      };
 
       # Git
       fugitive.enable = true;
@@ -145,7 +144,7 @@
       fzf-lua.enable = true; # fzf (fuzzy search)
 
       ## Theming ##
-      chadtree.enable = true; # File tree tab on the left
+      neo-tree.enable = true; # File tree tab on the left
       lualine.enable = true; # Statusline
       # Start UI
       startup = {
