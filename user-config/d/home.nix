@@ -1,26 +1,20 @@
-{ inputs, pkgs, ags, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    inputs.ags.homeManagerModules.default
-
     ./packages.nix
-    ./python.nix
+    ../shared/stylix.nix
     ../../system-config/MapleWorld/fish
-    ./hyprland
     ../shared/kdeconnect
     ../shared/kitty
     ../shared/nixvim
-    ./obs-studio
     ./starship
-    ../shared/stylix.nix
-        #./swayidle
     ../shared/syncthing
   ];
 
   programs.home-manager.enable = true;
-  home.username = "maplespace";
-  home.homeDirectory = "/home/maplespace";
+  home.username = "d";
+  home.homeDirectory = "/home/d";
 
   qt.enable = true;
   gtk.enable = true;
@@ -42,11 +36,6 @@
     enableSshSupport = true;
   };
 
-  programs.ags = {
-    enable = true;
-    configDir = ./ags;
-  };
-
   xdg = {
     portal = {
       enable = true;
@@ -57,12 +46,8 @@
       config.common.default = "*";
     };
     configFile = {
-      "hypr/hyprpaper.conf".source = ./hyprland/hyprpaper.conf;
-      "hypr/hyprshade.toml".source = ./hyprland/hyprshade.toml;
-      "hypr/hypridle.conf".source = ./hyprland/hypridle.conf;
       "mov-cli/config.toml".source = ./mov-cli/config.toml;
       #"nvim/init.lua".source = ./neovim/init.lua;
-      "swaylock/config".source = ./swaylock/config;
     };
   };
 

@@ -125,7 +125,6 @@
     ## kde
     krita
     #kalzium
-    kdeconnect
     kdenlive
     kitty
     okular
@@ -145,8 +144,11 @@
     ffmpeg
 
     ## science
-    gnome.gnome-calculator
+    gnome-calculator
 
+    ## audio
+    reaper
+    bitwig-studio
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [

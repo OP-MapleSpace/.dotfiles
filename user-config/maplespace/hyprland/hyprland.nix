@@ -187,17 +187,10 @@ bind = $mainMod, D, togglesplit, # dwindle
 bind = $mainMod, P, pin
 bind = $mainMod, C, killactive
 bind = $mainMod, Q, exit
-<<<<<<< HEAD
-bind = $shMod, M, fullscreen, 0
-bind = $mainMod, M, fullscreen, 1
-bind = $altMod, M, fullscreen, 2
-bind = $ctrlMod, M, fakefullscreen
-=======
 bind = $mainMod, M, fullscreenstate, 1 0
 bind = $shMod, M, fullscreenstate, 0 2
 bind = $altMod, M, fullscreenstate, 2 0
 bind = $ctrlMod, M, fullscreenstate, 2 2
->>>>>>> parent of f513d03 (Hyprland Nix Config)
 
 # # Minimizing, brought to you by https://github.com/hyprwm/Hyprland/issues/995#issuecomment-1937369517 & https://github.com/hyprwm/Hyprland/issues/995#issuecomment-2069669681
 bind = $mainMod, N, movetoworkspacesilent, special:minimized
@@ -245,15 +238,10 @@ binde = , down, resizeactive, 0 10
 bind = , escape, submap, reset # reset to the global submap
 submap = reset
 
-<<<<<<< HEAD
-
-# Switch workspaces, using plugin https://github.com/Duckonaut/split-monitor-workspaces
-=======
 # Lock
 binde = $ctrlMod, L, exec,systemctl suspend
 
 # Switch workspaces
->>>>>>> parent of f513d03 (Hyprland Nix Config)
 bind = $mainMod, 1, workspace, 1
 bind = $mainMod, 2, workspace, 2
 bind = $mainMod, 3, workspace, 3
@@ -290,11 +278,7 @@ bindm = $mainMod, mouse:273, resizewindow
 
 # Lid opening and closing
 # trigger when the switch is turning on (i.e., lid closes)
-<<<<<<< HEAD
-bindl=,switch:on:Lid Switch,exec,systemctl suspend
-=======
 #bindl=,switch:on:Lid Switch,exec,systemctl suspend
->>>>>>> parent of f513d03 (Hyprland Nix Config)
 # trigger when the switch is turning off (i.e., lid opens)
 bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "${laptop_screen}, 2560x1440, 0x0, 1.25" && hyprshade auto
 
@@ -303,11 +287,7 @@ exec-once = distrobox-assemble create --file ~/.dotfiles/user-config/maplespace/
 
 # For screensharing
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-<<<<<<< HEAD
-windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
-=======
 windowrulev2 = opacity 0.0 override,class:^(xwaylandvideobridge)$
->>>>>>> parent of f513d03 (Hyprland Nix Config)
 windowrulev2 = noanim,class:^(xwaylandvideobridge)$
 windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 windowrulev2 = maxsize 1 1,class:^(xwaylandvideobridge)$
