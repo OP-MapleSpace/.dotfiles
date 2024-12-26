@@ -23,17 +23,12 @@
         "https://hyprland.cachix.org"
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
-        "https://nix-gaming.cachix.org"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       ];
   };
-
-  # Video Drivers
-  services.xserver.videoDrivers = ["amdgpu"];
 
   networking = {
     hostName = "MapleWorld"; # Define your hostname.
@@ -187,15 +182,11 @@
   security.pam.services.swaylock-effects = {};
 
   # Enable Steam
-  programs = {
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    };
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
-  hardware.xone.enable = true; # support for the xbox controller USB dongle
-  services.getty.autologinUser = "maplespace";
 
   # Enable VMs and Docker
   virtualisation = {
@@ -222,18 +213,12 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment = {
-    systemPackages = with pkgs; [
-      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      neovim
-      wget
-      mangohud
-      inputs.zen-browser.packages."${system}".default
-    ];
-    loginShellInit = ''
-      [[ "$(tty)" = "/dev/tty1" ]] && ./gs.sh
-    '';
-  };
+  environment.systemPackages = with pkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    neovim
+    wget
+    #python3
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -255,27 +240,20 @@
   fonts = {
     packages = with pkgs; [
       noto-fonts
-      noto-fonts-cjk-sans
+      noto-fonts-cjk
       noto-fonts-emoji
       font-awesome
       source-han-sans
       source-han-sans-japanese
       source-han-serif-japanese
       source-code-pro
+      nerdfonts
       fira
       fira-mono
       fira-code
       cascadia-code
       comic-relief
       comfortaa
-      nerd-fonts.ubuntu
-      nerd-fonts.caskaydia-cove
-      nerd-fonts.code-new-roman
-      nerd-fonts.comic-shanns-mono
-      nerd-fonts.martian-mono
-      nerd-fonts.symbols-only
-      nerd-fonts.caskaydia-mono
-      nerd-fonts.space-mono
     ];
   };
 

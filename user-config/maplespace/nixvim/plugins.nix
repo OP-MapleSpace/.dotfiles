@@ -101,7 +101,9 @@
       };
       lsp-lines = {
         enable = true;
+        #currentLine = true;
       };
+      rust-tools.enable = true;
       none-ls.enable = true;
 
       # treesitter config

@@ -29,10 +29,10 @@
     ## browsers
     #floorp
     brave
-    lynx
+	lynx
 
-    # email
-    thunderbird
+	# email
+	thunderbird
 
     ## discord :skull:
     discord-canary
@@ -109,7 +109,7 @@
     glibc
     uwuify
     bottles
-    ventoy
+    #etcher
 
     ## VMs, VPNs, remote, syncing
     distrobox
@@ -125,7 +125,7 @@
     ## kde
     krita
     #kalzium
-    kdePackages.kdeconnect-kde
+    kdeconnect
     kdenlive
     kitty
     okular
@@ -136,20 +136,16 @@
     lua
     gfortran
     jq
-    julia
+    julia-bin
 
     ## media
     gimp
     inkscape
-    #blender
+    blender
     ffmpeg
 
     ## science
     gnome.gnome-calculator
-
-    ## Audio
-    bitwig-studio
-    reaper
 
   ];
 
@@ -165,7 +161,6 @@
     "cudatoolkit"
     "steam" "steam-run" "steam-original"
     "minecraft-launcher"
-    "bitwig-studio" "reaper"
   ];
 
 /*  nixpkgs.overlays =

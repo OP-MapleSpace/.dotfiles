@@ -26,7 +26,6 @@
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     # Nixos Hardware
     #nixos-hardware.url = "github:NixOS/nixos-hardware/master";
