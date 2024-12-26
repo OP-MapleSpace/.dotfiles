@@ -29,10 +29,10 @@
     ## browsers
     #floorp
     brave
-	lynx
+    lynx
 
-	# email
-	thunderbird
+    # email
+    thunderbird
 
     ## social media apps
     discord-canary
@@ -106,7 +106,7 @@
     uwuify
     #comma
     bottles
-    #etcher
+    ventoy
 
     ## VMs, VPNs, remote, syncing
     distrobox
@@ -122,7 +122,7 @@
     ## kde
     krita
     #kalzium
-    kdeconnect
+    kdePackages.kdeconnect-kde
     kdenlive
     kitty
     okular
@@ -133,16 +133,20 @@
     lua
     gfortran
     jq
-    julia-bin
+    julia
 
     ## media
     gimp
     inkscape
-    blender
+    #blender
     ffmpeg
 
     ## science
     gnome-calculator
+
+    ## Audio
+    bitwig-studio
+    reaper
 
   ];
 
@@ -158,6 +162,7 @@
     "cudatoolkit"
     "steam" "steam-run" "steam-original"
     "minecraft-launcher"
+    "bitwig-studio" "reaper"
   ];
 
   nixpkgs.config.permittedInsecurePackages = [

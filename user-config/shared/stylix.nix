@@ -10,5 +10,6 @@
     };
     swaylock.enable = false;
     kitty.variant256Colors = true;
+    hyprland.enable = false;
   };
 }
