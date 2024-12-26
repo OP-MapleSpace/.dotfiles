@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 {
 
   imports =
@@ -155,7 +155,7 @@
   hardware.bluetooth.enable = true;
 
   # Enable sound.
-  #sound.enable = true;
+  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {

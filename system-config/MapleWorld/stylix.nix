@@ -62,7 +62,7 @@
     opacity.terminal = 0.8;
     targets = {
       grub.useImage = true;
-      nixvim.transparentBackground.main = true;
+      nixvim.transparent_bg.main = true;
     };
   };
 }

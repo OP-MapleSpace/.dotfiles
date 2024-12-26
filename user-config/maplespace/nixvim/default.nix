@@ -1,11 +1,10 @@
-{ inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./plugins.nix
     ./settings.nix
-    ./keymaps.nix
   ];
 
   programs.nixvim = {

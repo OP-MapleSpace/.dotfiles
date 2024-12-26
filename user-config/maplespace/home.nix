@@ -1,4 +1,4 @@
-{ inputs, pkgs, config, ... }:
+{ inputs, config, pkgs, lib, ags, ... }:
 
 {
   imports = [
@@ -6,16 +6,16 @@
 
     ./packages.nix
     ./python.nix
-    ../shared/stylix.nix
     ../../system-config/MapleWorld/fish
     ./hyprland
-    ../shared/kdeconnect
-    ../shared/kitty
-    ../shared/nixvim
+    ./kdeconnect
+    ./kitty
+    ./nixvim
     ./obs-studio
     ./starship
-    #./swayidle
-    ../shared/syncthing
+    ./stylix.nix
+    ./swayidle
+    ./syncthing
   ];
 
   programs.home-manager.enable = true;
@@ -46,12 +46,6 @@
     enable = true;
     configDir = ./ags;
   };
-
-  programs.zathura.extraConfig =
-  builtins.readFile (config.scheme {
-    use-ifd = "auto";
-    templateRepo = inputs.base16-zathura; target = "recolor";
-  });
 
   xdg = {
     portal = {

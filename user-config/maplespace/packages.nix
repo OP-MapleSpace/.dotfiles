@@ -34,25 +34,29 @@
     # email
     thunderbird
 
-    ## social media apps
+    ## discord :skull:
     discord-canary
-    dissent
     vesktop
+    discordchatexporter-cli
     element-desktop
-    freetube
 
-    # Productivity
-    super-productivity
+    ## gaming!!!
+    steam
+    lutris
+    bottles
+    ryujinx
+    vitetris
+    #minecraft
 
     ## file stuff
     lf
-    nemo-with-extensions
+    cinnamon.nemo-with-extensions
     udiskie
     onlyoffice-bin
     libreoffice
-    #zathura
+    zathura
     xournalpp
-    adwaita-icon-theme # xournal++ needs this for some reason
+    gnome3.adwaita-icon-theme # xournal++ needs this for some reason
     feh
     mpv
     mpd
@@ -65,6 +69,7 @@
     starship
     ### fish
     fish
+    fishPlugins.async-prompt
     fishPlugins.autopair
     fishPlugins.bass
     fishPlugins.colored-man-pages
@@ -72,6 +77,7 @@
     fishPlugins.puffer
     fishPlugins.sponge
     fishPlugins.z
+
     ### fun
     lolcat
     fortune
@@ -80,12 +86,10 @@
     cbonsai
     busybox
     ### utilities
-    xdg-desktop-portal-hyprland
     libguestfs
     htop
     btop
     git
-    gh
     imagemagick
     hyfetch
     fastfetch
@@ -104,7 +108,6 @@
     usbutils
     glibc
     uwuify
-    #comma
     bottles
     ventoy
 
@@ -142,7 +145,7 @@
     ffmpeg
 
     ## science
-    gnome-calculator
+    gnome.gnome-calculator
 
     ## Audio
     bitwig-studio
@@ -163,10 +166,6 @@
     "steam" "steam-run" "steam-original"
     "minecraft-launcher"
     "bitwig-studio" "reaper"
-  ];
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "jitsi-meet-1.0.8043"
   ];
 
 /*  nixpkgs.overlays =
