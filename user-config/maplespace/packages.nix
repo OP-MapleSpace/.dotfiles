@@ -30,7 +30,6 @@
     rofimoji
 
     ## browsers
-    #floorp
     brave
     lynx
 
@@ -131,6 +130,7 @@
     okular
 
     ## programming
+    gh
     micromamba
     nodejs
     lua
