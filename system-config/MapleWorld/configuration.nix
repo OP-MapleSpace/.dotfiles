@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 {
 
   imports =
@@ -143,6 +143,9 @@
   users.defaultUserShell = pkgs.fish;
   environment.shells = with pkgs; [ fish ];
 
+  # Editor
+  environment.variables.EDITOR = "nvim";
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -150,8 +153,7 @@
   hardware.bluetooth.enable = true;
 
   # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  #sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -175,7 +177,10 @@
   };
 
   # Enable hyprland
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
 
   # Enable Swaylock
   security.pam.services.swaylock = {};
@@ -213,18 +218,18 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    neovim
-    wget
-    #python3
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      neovim
+      wget
+      #python3
+    ];
+    sessionVariables.NIXOS_OZONE_WL = "1";
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # Editor
-  environment.variables.EDITOR = "nvim";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -239,21 +244,24 @@
   # Fonts
   fonts = {
     packages = with pkgs; [
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
+      comfortaa
       font-awesome
+      nerd-fonts.caskaydia-cove
+      nerd-fonts.caskaydia-mono
+      nerd-fonts.code-new-roman
+      nerd-fonts.comic-shanns-mono
+      nerd-fonts.fira-code
+      nerd-fonts.fira-mono
+      nerd-fonts.martian-mono
+      nerd-fonts.space-mono
+      nerd-fonts.symbols-only
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
       source-han-sans
       source-han-sans-japanese
       source-han-serif-japanese
       source-code-pro
-      nerdfonts
-      fira
-      fira-mono
-      fira-code
-      cascadia-code
-      comic-relief
-      comfortaa
     ];
   };
 

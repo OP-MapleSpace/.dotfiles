@@ -11,6 +11,9 @@
     hyprpicker
     hyprshade
     hypridle
+    hyprsunset
+    hyprland-qtutils
+    hyprland-protocols
     waybar
     eww
     swaylock-effects
@@ -29,34 +32,33 @@
     ## browsers
     #floorp
     brave
-	lynx
+    lynx
 
-	# email
-	thunderbird
+    # email
+    thunderbird
 
-    ## discord :skull:
+    ## Social Media
     discord-canary
     vesktop
-    discordchatexporter-cli
-    element-desktop
+    freetube
 
     ## gaming!!!
     steam
     lutris
-    bottles
+    #bottles
     ryujinx
     vitetris
     #minecraft
 
     ## file stuff
     lf
-    cinnamon.nemo-with-extensions
+    nemo-with-extensions
     udiskie
     onlyoffice-bin
     libreoffice
     zathura
     xournalpp
-    gnome3.adwaita-icon-theme # xournal++ needs this for some reason
+    adwaita-icon-theme # xournal++ needs this for some reason
     feh
     mpv
     mpd
@@ -69,7 +71,7 @@
     starship
     ### fish
     fish
-    fishPlugins.async-prompt
+    #fishPlugins.async-prompt
     fishPlugins.autopair
     fishPlugins.bass
     fishPlugins.colored-man-pages
@@ -108,8 +110,7 @@
     usbutils
     glibc
     uwuify
-    bottles
-    #etcher
+    ventoy
 
     ## VMs, VPNs, remote, syncing
     distrobox
@@ -125,7 +126,7 @@
     ## kde
     krita
     #kalzium
-    kdenlive
+    #kdenlive
     kitty
     okular
 
@@ -135,7 +136,7 @@
     lua
     gfortran
     jq
-    julia-bin
+    julia
 
     ## media
     gimp
@@ -165,12 +166,12 @@
     "minecraft-launcher"
   ];
 
-/*  nixpkgs.overlays =
-    let
-      myOverlay = self: super: {
-        discord-canary = super.discord-canary.override { withOpenASAR = true; withVencord = true; };
-      };
-    in
-      [ myOverlay ];*/
+  /*  nixpkgs.overlays =
+let
+myOverlay = self: super: {
+discord-canary = super.discord-canary.override { withOpenASAR = true; withVencord = true; };
+};
+in
+[ myOverlay ];*/
 
 }

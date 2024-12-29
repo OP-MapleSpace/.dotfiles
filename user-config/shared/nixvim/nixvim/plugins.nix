@@ -62,6 +62,7 @@
           cssls.enable = true; # CSS
           dockerls.enable = true; # Docker
           #fish_lsp.enable = true; # Fish shell
+          gdscript.enable = true; # GDScript (Godot)
           gopls.enable = true; # GO
           #gradle_ls.enable = true; # Gradle (Java)
           html.enable = true; # HTML
@@ -90,7 +91,7 @@
           "gr" = "references";
           "gt" = "type_definition";
           "gi" = "implementation";
-          "gk" = "hover";
+          "k" = "hover";
         };
       };
       lsp-lines = {

@@ -63,12 +63,12 @@ decoration {
     inactive_opacity = 0.8
     fullscreen_opacity = 1.0
 
-    drop_shadow = yes
-    shadow_range = 20
-    shadow_render_power = 2
-    shadow_ignore_window = yes
-    col.shadow = rgba(008cffdd)
-    col.shadow_inactive = rgba(eebbeeee)
+    #drop_shadow = yes
+    #shadow_range = 20
+    #shadow_render_power = 2
+    #shadow_ignore_window = yes
+    #col.shadow = rgba(008cffdd)
+    #col.shadow_inactive = rgba(eebbeeee)
 
     blur {
       enabled = yes

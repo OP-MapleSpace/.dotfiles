@@ -66,9 +66,8 @@
           clangd.enable = true; # C
           cssls.enable = true; # CSS
           dockerls.enable = true; # Docker
-          #gdscript.enable = true; # GDScript (Godot)
           gopls.enable = true; # GO
-          #html.enable = true; # HTML
+          html.enable = true; # HTML
           java_language_server.enable = true; # Java
           #julials.enable = true; # Julia
           kotlin_language_server.enable = true; # Kotlin
@@ -88,8 +87,6 @@
           tailwindcss.enable = true; # Tailwind CSS
           texlab.enable = true; # LaTeX
           ts_ls.enable = true; # TypeScript
-          typos_lsp.enable = true; # Spelling
-          #vuels.enable = true; # Vue JS
           yamlls.enable = true; # YAML
         };
         keymaps.lspBuf = {
@@ -104,7 +101,6 @@
         enable = true;
         #currentLine = true;
       };
-      rust-tools.enable = true;
       none-ls.enable = true;
 
       # treesitter config
@@ -160,14 +156,14 @@
 
     ## Extras ##
     # Tetris uwu
-    extraPlugins = [(pkgs.vimUtils.buildVimPlugin {
-      name = "nvim-tetris";
-      src = pkgs.fetchFromGitHub {
-        owner = "alec-gibson";
-        repo = "nvim-tetris";
-        rev = "d17c99fb527ada98ffb0212ffc87ccda6fd4f7d9";
-        hash = "sha256-+69Fq5aMMzg9nV05rZxlLTFwQmDyN5/5HmuL2SGu9xQ=";
-      };
-    })];
+    #extraPlugins = [(pkgs.vimUtils.buildVimPlugin {
+    #  name = "nvim-tetris";
+    #  src = pkgs.fetchFromGitHub {
+    #    owner = "alec-gibson";
+    #    repo = "nvim-tetris";
+    #    rev = "d17c99fb527ada98ffb0212ffc87ccda6fd4f7d9";
+    #    hash = "sha256-+69Fq5aMMzg9nV05rZxlLTFwQmDyN5/5HmuL2SGu9xQ=";
+    #  };
+    #})];
   };
 }

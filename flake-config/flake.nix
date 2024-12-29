@@ -13,8 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
     ags.url = "github:Aylur/ags";
 
     sddm-sugar-candy-nix = {
@@ -39,7 +37,7 @@
   };
 
 
-  outputs = { self, nixpkgs, home-manager, hyprland, sddm-sugar-candy-nix, firefox, stylix, ags, nixvim, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, sddm-sugar-candy-nix, firefox, stylix, ags, nixvim, ... }@inputs:
     let
       system = "x86_64-linux";
       specialArgs = inputs;
@@ -59,8 +57,6 @@
                 extraSpecialArgs = {  inherit system nixpkgs home-manager inputs; };
               };
             }
-
-            hyprland.nixosModules.default
 
             stylix.nixosModules.stylix
 
