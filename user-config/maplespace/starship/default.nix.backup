@@ -1,9 +1,9 @@
-{ config, ... }: {
+{pkgs, lib, config, ...}: {
   programs.starship.enable = true;
   programs.starship.enableFishIntegration = true;
   programs.starship.settings = {
     add_newline = false;
-    format = "$username[@](${config.lib.stylix.colors.withHashtag.base04})$hostname [visiting](${config.lib.stylix.colors.withHashtag.base0B}) $directory $all $line_break[$status](bold)$character ";
+    format = "$username[@](${config.lib.stylix.colors.withHashtag.base03})$hostname [visiting](${config.lib.stylix.colors.withHashtag.base0B}) $directory $all $line_break[$status](bold)$character ";
     right_format = "$cmd_duration | $memory_usage | $battery ";
 
     battery.display = [
@@ -58,7 +58,7 @@
 
     username = {
       show_always = true;
-      style_root = "bold ${config.lib.stylix.colors.withHashtag.base07}";
+      style_root = "bold ${config.lib.stylix.colors.withHashtag.base02}";
       style_user = "bold ${config.lib.stylix.colors.withHashtag.base05}";
       format = "[$user]($style)";
     };

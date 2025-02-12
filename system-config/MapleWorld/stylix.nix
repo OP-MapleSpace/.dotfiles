@@ -12,14 +12,14 @@
     base16Scheme = {
       base00 = "#000000"; # black | Default Background
       base01 = "#aaccee"; # ace | Lighter Background (Used for status bars, line number and folding marks)
-      base02 = "#0000ff"; # blue | Selection Background
-      base03 = "#8c00ff"; # purple | Comments, Invisibles, Line Highlighting
-      base04 = "#0000ff"; # blue | Dark Foreground (Used for status bars)
+      base02 = "#bbeeee"; # bee | Selection Background
+      base03 = "#ffaa00"; # orange | Comments, Invisibles, Line Highlighting
+      base04 = "#8c00ff"; # purple | Dark Foreground (Used for status bars)
       base05 = "#008cff"; # royal blue | Default Foreground, Caret, Delimiters, Operators
-      base06 = "#bbeeee"; # bee (light blue) | Extra Light Color
-      base07 = "#eebbee"; # ebe (light pink) | Extra Light Color
+      base06 = "#eebbee"; # ebe (light pink) | Extra Light Color
+      base07 = "#0000ff"; # dark blue | Extra Dark Color
       base08 = "#ffff00"; # yellow | Variables, XML Tags, Markup Link Text, Markup Lists
-      base09 = "#ffaaee"; # orange | Integers, Boolean, Constants, XML Attributes, Markup Link Url
+      base09 = "#eebbee"; # orange | Integers, Boolean, Constants, XML Attributes, Markup Link Url
       base0A = "#00ffb7"; # turquoise | Classes, Markup Bold, Search Text Background, Opening/Closing Embedded Language Tags
       base0B = "#00ff00"; # lime | Strings, Inherited Class, Markup Code, Diff Inserted
       base0C = "#00ffff"; # cyan | Support, Regular Expressions, Escape Characters, Markup Quotes
@@ -62,7 +62,7 @@
     opacity.terminal = 0.8;
     targets = {
       grub.useImage = true;
-      nixvim.transparent_bg.main = true;
+      nixvim.transparentBackground.main = true;
     };
   };
 }

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 {
 
   imports =
@@ -19,15 +19,15 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   nix.settings = {
-      substituters = [
-        "https://hyprland.cachix.org"
-        "https://cache.nixos.org/"
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
+    substituters = [
+      "https://hyprland.cachix.org"
+      "https://cache.nixos.org/"
+      "https://nix-community.cachix.org"
+    ];
+    trusted-public-keys = [
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
 
   networking = {
@@ -42,41 +42,41 @@
     };
 
     /*wireguard.interfaces = {
-      # "wg0" is the network interface name. You can name the interface arbitrarily.
-      wg0 = {
-        # Determines the IP address and subnet of the server's end of the tunnel interface.
-        ips = [ "192.168.2.17/24" ];
+# "wg0" is the network interface name. You can name the interface arbitrarily.
+wg0 = {
+# Determines the IP address and subnet of the server's end of the tunnel interface.
+ips = [ "192.168.2.17/24" ];
 
-        # The port that WireGuard listens to. Must be accessible by the client.
-        listenPort = 51820;
+# The port that WireGuard listens to. Must be accessible by the client.
+listenPort = 51820;
 
-        # This allows the wireguard server to route your traffic to the internet and hence be like a VPN
-        # For this to work you have to set the dnsserver IP of your router (or dnsserver of choice) in your clients
-        postSetup = ''
-          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
-        '';
+# This allows the wireguard server to route your traffic to the internet and hence be like a VPN
+# For this to work you have to set the dnsserver IP of your router (or dnsserver of choice) in your clients
+postSetup = ''
+${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
+'';
 
-        # This undoes the above command
-        postShutdown = ''
-          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
-        '';
+# This undoes the above command
+postShutdown = ''
+${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
+'';
 
-        # Note: The private key can also be included inline via the privateKey option,
-        # but this makes the private key world-readable; thus, using privateKeyFile is
-        # recommended.
-        privateKeyFile = "/home/maplespace/Downloads/ProtonVPN_server_configs/protonfun_-NL-FREE-177131.conf";
+# Note: The private key can also be included inline via the privateKey option,
+# but this makes the private key world-readable; thus, using privateKeyFile is
+# recommended.
+privateKeyFile = "/home/maplespace/Downloads/ProtonVPN_server_configs/protonfun_-NL-FREE-177131.conf";
 
-        peers = [
-          # List of allowed peers.
-          { # Feel free to give a meaning full name
-            # Public key of the peer (not a file path).
-            publicKey = "kGXEd8fGzTtRJZ4lbbLwCKGNQbHnb7S6uh9hi/Gmdjg=";
-            # List of IPs assigned to this peer within the tunnel subnet. Used to configure routing.
-            allowedIPs = [ "192.168.2.17/24" ];
-          }
-        ];
-      };
-    };*/
+peers = [
+# List of allowed peers.
+{ # Feel free to give a meaning full name
+# Public key of the peer (not a file path).
+publicKey = "kGXEd8fGzTtRJZ4lbbLwCKGNQbHnb7S6uh9hi/Gmdjg=";
+# List of IPs assigned to this peer within the tunnel subnet. Used to configure routing.
+allowedIPs = [ "192.168.2.17/24" ];
+}
+];
+};
+};*/
 
     # Configure network proxy if necessary
     # proxy.default = "http://user:password@proxy:port/";
@@ -101,7 +101,7 @@
   i18n.defaultLocale = "en_CA.UTF-8";
   console = {
     font = "Lat2-Terminus16";
-  #    keyMap = "us";
+    #    keyMap = "us";
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
@@ -121,8 +121,9 @@
   #   "caps:escape" # map caps to escape.
   # };
 
-  # Enable upower
+  # Power Management
   services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
 
   # Enable GVFS
   services.gvfs.enable = true;
@@ -165,7 +166,8 @@
 
   services.mpd = {
     enable = true;
-    musicDirectory = "/path/to/music";
+    dataDir = "/home/maplespace/Sync";
+    musicDirectory = "/home/maplespace/Sync/Music";
     extraConfig = ''
       # must specify one or more outputs in order to play audio!
       # (e.g. ALSA, PulseAudio, PipeWire), see next sections
@@ -174,7 +176,13 @@
         name "My PipeWire Output"
       }
     '';
+    network.listenAddress = "any"; # if you want to allow non-localhost connections
+    user = "maplespace";
   };
+  systemd.services.mpd.environment = {
+    # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
+    XDG_RUNTIME_DIR = "/run/user/${toString config.users.users.maplespace.uid}"; # User-id must match above user. MPD will look inside this directory for the PipeWire socket.
+};
 
   # Enable hyprland
   programs.hyprland = {

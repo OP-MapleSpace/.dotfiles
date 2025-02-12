@@ -33,7 +33,6 @@
             {name = "clippy";}
             {name = "cmdline";}
             {name = "cmp-cmdline-history";}
-            {name = "codeium";}
             {name = "dap";}
             {name = "emoji";}
             {name = "fish";}
@@ -48,7 +47,6 @@
           ];
         };
       };
-      #codeium-vim.enable = true;
 
       # lsp config
       lsp = {

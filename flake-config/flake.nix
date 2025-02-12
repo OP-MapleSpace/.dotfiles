@@ -6,6 +6,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix.url = "github:danth/stylix";
 
     nixvim = {
@@ -13,7 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ags.url = "github:Aylur/ags";
 
     sddm-sugar-candy-nix = {
       url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
@@ -24,30 +27,53 @@
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Nixos Hardware
-    #nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    # NUR
-    #nurpkgs = {
-      #url = github:nix-community/NUR;
-      #inputs.nixpkgs.follows = "nixpkgs";
-    #};
-
   };
 
 
-  outputs = { self, nixpkgs, home-manager, sddm-sugar-candy-nix, firefox, stylix, ags, nixvim, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, sddm-sugar-candy-nix, firefox, stylix, nixvim, nix-index-database, ... }@inputs:
     let
       system = "x86_64-linux";
-      specialArgs = inputs;
     in
     {
       nixosConfigurations = {
-        #AlphaHlynurSolare = nixpkgs.lib.nixosSystem {};
+        EtoileLaplace = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            nix-index-database.nixosModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useUserPackages = true;
+                users = {
+                  l = import ../user-config/l/home.nix;
+                  d = import ../user-config/d/home.nix;
+                };
+                extraSpecialArgs = {  inherit system nixpkgs home-manager inputs; };
+              };
+            }
+
+            stylix.nixosModules.stylix
+
+            sddm-sugar-candy-nix.nixosModules.default
+            {
+              nixpkgs = {
+                overlays = [
+                  sddm-sugar-candy-nix.overlays.default
+                ];
+              };
+            }
+
+            ../system-config/EtoileLaplace/configuration.nix
+            ../system-config/EtoileLaplace/hardware-configuration.nix
+          ];
+        };
         MapleWorld = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
+            nix-index-database.nixosModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
 
             home-manager.nixosModules.home-manager
             {
@@ -74,15 +100,6 @@
           ];
         };
       };
-      substituters = [
-        "https://hyprland.cachix.org"
-        "https://cache.nixos.org/"
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
     };
 
 }

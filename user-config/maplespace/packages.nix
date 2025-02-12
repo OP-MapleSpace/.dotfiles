@@ -13,11 +13,10 @@
     hypridle
     hyprsunset
     hyprland-qtutils
-    hyprland-protocols
+    #hyprland-protocols
     waybar
     eww
     swaylock-effects
-    swayidle
     wl-clipboard
     xwaylandvideobridge
     grim
@@ -32,8 +31,7 @@
     ## browsers
     brave
     lynx
-
-    # email
+    ## email
     thunderbird
 
     ## Social Media
@@ -44,13 +42,15 @@
     ## gaming!!!
     steam
     lutris
+    space-cadet-pinball
     #bottles
     ryujinx
     vitetris
-    #minecraft
 
-    ## file stuff
+    ## File Stuff
     lf
+    nnn
+    superfile
     nemo-with-extensions
     udiskie
     onlyoffice-bin
@@ -58,16 +58,21 @@
     zathura
     xournalpp
     adwaita-icon-theme # xournal++ needs this for some reason
+    qbittorrent
+    p7zip
+    ## Media
     feh
     mpv
     mpd
+    mpc
+    ncmpcpp
     vlc
-    qbittorrent
-    p7zip
+    cava
 
     ## terminal
     kitty
     starship
+    waveterm.out
     ### fish
     fish
     #fishPlugins.async-prompt
@@ -87,6 +92,8 @@
     cbonsai
     busybox
     ### utilities
+    acpi
+    cronie
     libguestfs
     htop
     btop
@@ -110,6 +117,7 @@
     glibc
     uwuify
     ventoy
+    power-profiles-daemon
 
     ## VMs, VPNs, remote, syncing
     distrobox
@@ -141,11 +149,12 @@
     ## media
     gimp
     inkscape
-    blender
+    #blender
     ffmpeg
 
-    ## science
+    ## STEM
     gnome-calculator
+    #kicad
 
     ## audio
     reaper
@@ -164,6 +173,7 @@
     "cudatoolkit"
     "steam" "steam-run" "steam-original"
     "minecraft-launcher"
+    "SpacePinballCadet"
   ];
 
   /*  nixpkgs.overlays =

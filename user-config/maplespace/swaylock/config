@@ -27,7 +27,7 @@ ring-wrong-color=ff000077
 text-clear-color=ffffff
 inside-clear-color=000000
 ring-clear-color=303030aa
-image=/home/maplespace/.dotfiles/wallpaper/SpaceAce.png
+image=/home/maplespace/.dotfiles/images/SpaceAce.png
 effect-blur=5x5
 grace=15
 grace-no-mouse

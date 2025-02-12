@@ -36,7 +36,6 @@
             {name = "clippy";}
             {name = "cmdline";}
             {name = "cmp-cmdline-history";}
-            {name = "codeium";}
             {name = "dap";}
             {name = "emoji";}
             {name = "fish";}
@@ -51,7 +50,6 @@
           ];
         };
       };
-      #codeium-vim.enable = true;
       undotree.enable = true;
       barbar.enable = true; # better tabs
 

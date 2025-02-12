@@ -1,8 +1,7 @@
-{ inputs, pkgs, ags, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    inputs.ags.homeManagerModules.default
 
     ./packages.nix
     ./python.nix
@@ -10,12 +9,13 @@
     ./hyprland
     ../shared/kdeconnect
     ../shared/kitty
+    ./mako
     ../shared/nixvim
     ./obs-studio
     ./starship
     ../shared/stylix.nix
-        #./swayidle
     ../shared/syncthing
+    ../maplespace/waybar
   ];
 
   programs.home-manager.enable = true;
@@ -40,11 +40,6 @@
     defaultCacheTtl = 34560000;
     maxCacheTtl = 34560000;
     enableSshSupport = true;
-  };
-
-  programs.ags = {
-    enable = true;
-    configDir = ./ags;
   };
 
   xdg = {

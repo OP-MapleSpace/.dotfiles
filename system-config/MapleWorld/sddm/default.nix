@@ -6,7 +6,7 @@
     sugarCandyNix = {
       enable = true;
       settings = {
-        Background = lib.cleanSource ../../../wallpaper/SpaceAce.png;
+        Background = lib.cleanSource ../../../images/SpaceAce.png;
         FullBlur = true;
         BlurRadius = 25;
         FormPosition  =  "left";

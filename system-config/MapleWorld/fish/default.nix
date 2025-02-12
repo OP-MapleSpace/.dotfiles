@@ -34,6 +34,9 @@
 
       pymov = "nix-shell ~/.dotfiles/python-env/py-mov-cli/shell.nix --command 'fish'";
 
+      restart = "systemctl reboot";
+      restartfs = "systemctl reboot --firmware-setup";
+
       starwars = "telnet towel.blinkenlights.nl";
     };
 

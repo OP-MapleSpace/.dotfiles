@@ -17,7 +17,7 @@ xwayland {
 # Execute your favorite apps and scripts at launch
 env = GDK_SCALE,1.25
 env = XCURSOR_SIZE,24
-exec-once = ags -c ~/.dotfiles/user-config/maplespace/ags/config.js
+exec = waybar
 exec-once = wl-paste --watch cliphist store
 exec-once = udiskie &
 exec-once = nm-applet
@@ -63,18 +63,19 @@ decoration {
     inactive_opacity = 0.8
     fullscreen_opacity = 1.0
 
-    #drop_shadow = yes
-    #shadow_range = 20
-    #shadow_render_power = 2
-    #shadow_ignore_window = yes
-    #col.shadow = rgba(008cffdd)
-    #col.shadow_inactive = rgba(eebbeeee)
-
     blur {
       enabled = yes
       size = 3
       passes = 3
       new_optimizations = on
+    }
+
+    shadow {
+      enabled = true
+      range = 20
+      render_power = 2
+      color = rgba(008cffdd)
+      color_inactive = rgba(eebbeeee)
     }
 }
 
@@ -294,7 +295,7 @@ windowrulev2 = maxsize 1 1,class:^(xwaylandvideobridge)$
 windowrulev2 = noblur,class:^(xwaylandvideobridge)$
 
 # Hyprland apps
-exec-once = hyprpaper # Wallpaper
+#exec-once = hyprpaper # Wallpaper
 exec = hyprshade auto # Shader; blue light filter
 exec-once = hypridle # Idle daemon
 ''
