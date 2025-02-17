@@ -11,15 +11,15 @@
 
     base16Scheme = {
       base00 = "#000000"; # black | Default Background
-      base01 = "#000000"; # ace | Lighter Background (Used for status bars, line number and folding marks)
-      base02 = "#2a3aff"; # bee | Selection Background
-      base03 = "#ff00ff"; # orange | Comments, Invisibles, Line Highlighting
-      base04 = "#00ff00"; # purple | Dark Foreground (Used for status bars)
+      base01 = "#000000"; # black | Lighter Background (Used for status bars, line number and folding marks)
+      base02 = "#2a3aff"; # selection blue | Selection Background
+      base03 = "#ff00ff"; # magenta | Comments, Invisibles, Line Highlighting
+      base04 = "#00ff00"; # lime | Dark Foreground (Used for status bars)
       base05 = "#008cff"; # royal blue | Default Foreground, Caret, Delimiters, Operators
-      base06 = "#eebbee"; # ebe (light pink) | Extra Light Color
-      base07 = "#bbeeee"; # dark blue | Extra Dark Color
+      base06 = "#bbeeee"; # bee | Extra Light Color
+      base07 = "#eebbee"; # ebe (light pink) | Extra Light Color
       base08 = "#ffff00"; # yellow | Variables, XML Tags, Markup Link Text, Markup Lists
-      base09 = "#eebbee"; # orange | Integers, Boolean, Constants, XML Attributes, Markup Link Url
+      base09 = "#ffaa00"; # orange | Integers, Boolean, Constants, XML Attributes, Markup Link Url
       base0A = "#00ffb7"; # turquoise | Classes, Markup Bold, Search Text Background, Opening/Closing Embedded Language Tags
       base0B = "#00ff00"; # lime | Strings, Inherited Class, Markup Code, Diff Inserted
       base0C = "#00ffff"; # cyan | Support, Regular Expressions, Escape Characters, Markup Quotes
