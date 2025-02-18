@@ -11,6 +11,7 @@
       ./firefox-nightly
       ./sddm
       ./stylix.nix
+      ./systemd-timers
     ];
 
   # Use the systemd-boot EFI boot loader.

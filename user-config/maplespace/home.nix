@@ -15,7 +15,7 @@
     ./starship
     ../shared/stylix.nix
     ../shared/syncthing
-    ../maplespace/waybar
+    ./waybar
   ];
 
   programs.home-manager.enable = true;

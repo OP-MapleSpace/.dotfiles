@@ -7,15 +7,15 @@
         layer = "top";
         position = "top";
         height = 30;
-      modules-left = [
-          "hyprland/workspaces"
-          "group/hardware"
-          "mpd"
-        ];
-      modules-center = [
-          "clock"
-        ];
-      modules-right = [
+        modules-left = [
+            "hyprland/workspaces"
+            "group/hardware"
+            "mpd"
+          ];
+        modules-center = [
+            "clock"
+          ];
+        modules-right = [
           "privacy"
           "keyboard_state"
           "group/connections"
@@ -130,5 +130,24 @@
         };
       };
     };
+    style = ''
+    * {
+      font-family: FontAwesome, Cascadia Code, Helvetica, Arial, monospace;
+      font-size: 20px;
+      padding: 2px 5px;
+      margin: 0px 2px;
+      border-radius: 20px;
+    }
+
+    window#waybar {
+      background-color: #000000;
+      border-radius: 20px;
+      color: #ffffff;
+    }
+    button {
+      box-shadow: inset 0 -3px transparent;
+      border: none;
+    }
+    '';
   };
 }
