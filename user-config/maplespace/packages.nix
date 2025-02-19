@@ -27,6 +27,7 @@
     rofi-bluetooth
     rofi-power-menu
     rofimoji
+    walker
 
     ## browsers
     brave
@@ -68,6 +69,7 @@
     ncmpcpp
     vlc
     cava
+    #libcava
 
     ## terminal
     kitty
@@ -112,6 +114,7 @@
     networkmanager-openconnect
     networkmanagerapplet
     wireplumber
+    helvum
     playerctl
     usbutils
     glibc

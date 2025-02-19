@@ -42,6 +42,8 @@
     enableSshSupport = true;
   };
 
+  services.mpd-mpris.enable = true;
+
   xdg = {
     portal = {
       enable = true;

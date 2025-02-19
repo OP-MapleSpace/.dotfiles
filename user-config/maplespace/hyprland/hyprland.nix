@@ -159,6 +159,7 @@ bind = $mainMod, Escape, exec, rofi -show power-menu -modi power-menu:rofi-power
 bind = $mainMod, period, exec, rofimoji
 bind = ALT, B, exec, rofi-bluetooth
 bindel = ALT, XF86Calculator, exec, rofi -show calc -modi calc:rofi-calc -no-show-match -no-sort
+bind = $altMod, R, exec, walker
 
 # Color picker
 bind = $ctrlMod, P, exec, hyprpicker -a
