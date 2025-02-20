@@ -300,10 +300,10 @@ allowedIPs = [ "192.168.2.17/24" ];
     randomizedDelaySec = "45min";
   };
 
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/maplespace/.dotfiles";
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 2d";
   };
+
 }
