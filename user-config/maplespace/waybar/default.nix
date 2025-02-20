@@ -20,16 +20,16 @@
         ];
         modules-right = [
           #"group/hardware"
+          "network"
           "memory"
           "cpu"
           "temperature"
-          "network"
+          "battery"
           #"group/connections"
           "tray"
           #"group/power"
           "privacy"
           "idle_inhibitor"
-          "battery"
         ];
 
         "image/icon" = {
@@ -242,7 +242,7 @@
       }
 
       #wireplumber {
-        background-color: #2a3aff;
+        background-color: #8c00ff;
         color: #ffffff;
         padding: 0px 5px;
       }
@@ -251,8 +251,8 @@
       }
 
       #mpd {
-        background-color: #00ffff;
-        color: #000000;
+        background-color: #2a3aff;
+        color: #ffffff;
       }
 
       #clock {
@@ -279,8 +279,8 @@
       }
 
       #network {
-        background-color: #8c00ff;
-        color: #ffffff;
+        background-color: #00ffff;
+        color: #000000;
       }
       #network.disconnected {
         background-color: #ff0000;

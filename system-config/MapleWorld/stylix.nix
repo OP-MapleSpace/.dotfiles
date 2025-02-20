@@ -23,7 +23,7 @@
       base0A = "#00ffb7"; # turquoise | Classes, Markup Bold, Search Text Background, Opening/Closing Embedded Language Tags
       base0B = "#00ff00"; # lime | Strings, Inherited Class, Markup Code, Diff Inserted
       base0C = "#00ffff"; # cyan | Support, Regular Expressions, Escape Characters, Markup Quotes
-      base0D = "#ff00ff"; # magenta | Functions, Methods, Attribute IDs, Headings
+      base0D = "#8c00ff"; # purple | Functions, Methods, Attribute IDs, Headings
       base0E = "#ff44aa"; # light reddish pink | Keywords, Storage, Selector, Markup Italic, Diff Changed
       base0F = "#ff0000"; # red | Deprecated, Diff Removed
     };

@@ -3,8 +3,8 @@
   programs.starship.enableFishIntegration = true;
   programs.starship.settings = {
     add_newline = false;
-    format = "$username[@](${config.lib.stylix.colors.withHashtag.base04})$hostname [visiting](${config.lib.stylix.colors.withHashtag.base0B}) $directory $all $line_break[$status](bold)$character ";
-    right_format = "$cmd_duration | $memory_usage | $battery ";
+    format = "$username[@](${config.lib.stylix.colors.withHashtag.base0D})$hostname [visiting](${config.lib.stylix.colors.withHashtag.base0B}) $directory $all $line_break[$status](bold)$character ";
+    right_format = "$cmd_duration";
 
     battery.display = [
       {
@@ -52,7 +52,7 @@
     hostname = {
       ssh_only = false;
       disabled = false;
-      style = "bold ${config.lib.stylix.colors.withHashtag.base0D}";
+      style = "bold ${config.lib.stylix.colors.withHashtag.base03}";
       format = "[$ssh_symbol$hostname]($style)";
     };
 
