@@ -23,14 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    firefox = {
-      url = "github:nix-community/flake-firefox-nightly";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
 
-  outputs = { self, nixpkgs, home-manager, sddm-sugar-candy-nix, firefox, stylix, nixvim, nix-index-database, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, sddm-sugar-candy-nix, stylix, nixvim, nix-index-database, zen-browser, ... }@inputs:
     let
       system = "x86_64-linux";
     in
@@ -80,7 +77,7 @@
               home-manager = {
                 useUserPackages = true;
                 users.maplespace = import ../user-config/maplespace/home.nix;
-                extraSpecialArgs = {  inherit system nixpkgs home-manager inputs; };
+                extraSpecialArgs = {  inherit system nixpkgs home-manager zen-browser inputs; };
               };
             }
 

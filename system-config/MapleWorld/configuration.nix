@@ -8,7 +8,7 @@
   imports =
     [
       ./hardware-configuration.nix # Include the results of the hardware scan
-      ./firefox-nightly
+      #./firefox-nightly
       ./sddm
       ./stylix.nix
       ./systemd-timers
@@ -233,6 +233,7 @@ allowedIPs = [ "192.168.2.17/24" ];
       neovim
       wget
       #python3
+      #(callPackage ./zen/default.nix {})
     ];
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
@@ -303,7 +304,7 @@ allowedIPs = [ "192.168.2.17/24" ];
   programs.nh = {
     enable = true;
     clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
+    clean.extraArgs = "--keep-since 2d --keep 3";
     flake = "/home/maplespace/.dotfiles/flake-config";
   };
 

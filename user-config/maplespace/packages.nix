@@ -1,5 +1,5 @@
 # thanks to Nathan for helping me with this: https://github.com/Nathan13888/.dotfiles/blob/master/home-manager/packages.nix
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -18,7 +18,7 @@
     eww
     swaylock-effects
     wl-clipboard
-    xwaylandvideobridge
+    kdePackages.xwaylandvideobridge
     grim
     slurp
     swappy
@@ -32,13 +32,17 @@
     ## browsers
     brave
     lynx
+    (inputs.zen-browser.packages."${system}".twilight)
+    #librewolf
     ## email
     thunderbird
+    zoom-us
 
     ## Social Media
     discord-canary
     vesktop
     freetube
+    signal-desktop
 
     ## gaming!!!
     steam
@@ -138,7 +142,7 @@
     #kalzium
     #kdenlive
     kitty
-    okular
+    kdePackages.okular
 
     ## programming
     gh
@@ -162,10 +166,12 @@
     ## audio
     reaper
     bitwig-studio
+    audacity
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    #"discord-canary"
+    "discord-canary"
+    "zoom-us"
     "slack"
     "teams"
     "zoom"

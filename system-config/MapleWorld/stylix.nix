@@ -57,6 +57,7 @@
     cursor = {
       package = pkgs.afterglow-cursors-recolored;
       name = "Afterglow-Recolored-Catppuccin-Sapphire";
+      size = 32;
     };
     polarity = "dark";
     opacity.terminal = 0.8;

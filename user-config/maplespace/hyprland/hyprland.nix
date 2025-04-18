@@ -6,7 +6,7 @@ in
 ''
 # See https://wiki.hyprland.org/Configuring/Monitors/
 monitor=${laptop_screen}, 2560x1440@165, 0x0, 1.25
-monitor=${ext_mon_hdmi}, 1920x1080@144, auto, 1
+monitor=${ext_mon_hdmi}, 1920x1080@144, -1920x0, 1
 
 xwayland {
   force_zero_scaling = true
@@ -126,8 +126,8 @@ misc {
 # Example windowrule v1
 # windowrule = float, ^(kitty)$
 
-windowrule = opacity 0.9 override 0.8 override, ^(vesktop)$
-windowrule = opacity 0.9 override 0.8 override, ^(discord)$
+windowrule = opacity 0.9 override 0.8 override,class:^(vesktop)$
+windowrule = opacity 0.9 override 0.8 override,class:^(discord)$
 
 # Example windowrule v2
 # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
@@ -146,8 +146,9 @@ $shctrlaltMod = SUPERSHIFTCTRLALT
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = $mainMod, Return, exec, kitty
 bind = $mainMod, F, exec, nemo
-bind = $altMod, F, exec, firefox-nightly
-bind = $altMod, B, exec, brave
+bind = $altMod, E, exec, thunderbird
+bind = $altMod, B, exec, zen-twilight
+bind = $shaltMod, B, exec, brave
 bind = $altMod, K, exec, krita
 bind = $shaltMod, K, exec, kalzium
 bind = $altMod, C, exec, vesktop
@@ -157,7 +158,7 @@ bind = ALT, period, exec, btop
 bind = $mainMod, R, exec, rofi -combi-modi window,drun,ssh -show run
 bind = $mainMod, Escape, exec, rofi -show power-menu -modi power-menu:rofi-power-menu
 bind = $mainMod, period, exec, rofimoji
-bind = ALT, B, exec, rofi-bluetooth
+#bind = ALT, B, exec, rofi-bluetooth
 bindel = ALT, XF86Calculator, exec, rofi -show calc -modi calc:rofi-calc -no-show-match -no-sort
 bind = $altMod, R, exec, walker
 
@@ -289,11 +290,11 @@ exec-once = distrobox-assemble create --file ~/.dotfiles/user-config/maplespace/
 
 # For screensharing
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-windowrulev2 = opacity 0.0 override,class:^(xwaylandvideobridge)$
-windowrulev2 = noanim,class:^(xwaylandvideobridge)$
-windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
-windowrulev2 = maxsize 1 1,class:^(xwaylandvideobridge)$
-windowrulev2 = noblur,class:^(xwaylandvideobridge)$
+windowrule = opacity 0.0 override,class:^(xwaylandvideobridge)$
+windowrule = noanim,class:^(xwaylandvideobridge)$
+windowrule = noinitialfocus,class:^(xwaylandvideobridge)$
+windowrule = maxsize 1 1,class:^(xwaylandvideobridge)$
+windowrule = noblur,class:^(xwaylandvideobridge)$
 
 # Hyprland apps
 #exec-once = hyprpaper # Wallpaper

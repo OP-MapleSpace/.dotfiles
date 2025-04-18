@@ -6,35 +6,38 @@
     format = "$username[@](${config.lib.stylix.colors.withHashtag.base0D})$hostname [visiting](${config.lib.stylix.colors.withHashtag.base0B}) $directory $all $line_break[$status](bold)$character ";
     right_format = "$cmd_duration";
 
-    battery.display = [
-      {
-        threshold = 20;
-        style = "bold ${config.lib.stylix.colors.withHashtag.base0F}";
-        discharging_symbol = " ";
-        charging_symbol = "⚡️ ";
-      }
+    battery = {
+      disabled = true;
+      display = [
+        {
+          threshold = 20;
+          style = "bold ${config.lib.stylix.colors.withHashtag.base0F}";
+          discharging_symbol = " ";
+          charging_symbol = "⚡️ ";
+        }
 
-      {
-        threshold = 30;
-        style = "bold ${config.lib.stylix.colors.withHashtag.base08}";
-        discharging_symbol = "  ";
-        charging_symbol = "⚡️ ";
-      }
+        {
+          threshold = 30;
+          style = "bold ${config.lib.stylix.colors.withHashtag.base08}";
+          discharging_symbol = "  ";
+          charging_symbol = "⚡️ ";
+        }
 
-      {
-        threshold = 80;
-        style = "bold ${config.lib.stylix.colors.withHashtag.base0F}";
-        discharging_symbol = "  ";
-        charging_symbol = "⚡️ ";
-      }
+        {
+          threshold = 80;
+          style = "bold ${config.lib.stylix.colors.withHashtag.base0F}";
+          discharging_symbol = "  ";
+          charging_symbol = "⚡️ ";
+        }
 
-      {
-        threshold = 100;
-        style = "bold ${config.lib.stylix.colors.withHashtag.base0F}";
-        discharging_symbol = "  ";
-        charging_symbol = "⚡️ ";
-      }
-    ];
+        {
+          threshold = 100;
+          style = "bold ${config.lib.stylix.colors.withHashtag.base0F}";
+          discharging_symbol = "  ";
+          charging_symbol = "⚡️ ";
+        }
+      ];
+    };
 
     character = {
       # success_symbol = "[>\]\)====>](bold green)";
@@ -64,7 +67,7 @@
     };
 
     memory_usage = {
-      disabled = false;
+      disabled = true;
       threshold = -1;
       symbol = " ";
       format = "[$symbol $ram_pct]($style) ";
