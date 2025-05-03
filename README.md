@@ -11,12 +11,7 @@ If you have any tips or questions please feel free to tell/ask me!
 - wallpaper: centralized place for all the configs to use a wallpaper
     
 ## To-Do (in no order)
-- [ ] fix notifications
-- [ ] configure ags
-- - [ ] bar
-- - [ ] notifications
-- - [ ] runner
-- [ ] configure rofi
+- [ ] configure rofi/walker
 - [ ] configure zathura
 - [ ] configure nixvim
 

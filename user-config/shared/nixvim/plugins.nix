@@ -73,7 +73,7 @@
           nil_ls.enable = true; # Nix
           pyright.enable = true; # Python
           #r_language_server.enable = true; # R
-          ruff_lsp.enable = true; # Rust for Python(?)
+          #ruff_lsp.enable = true; # Rust for Python(?)
           rust_analyzer = { # Rust
             enable = true;
             installRustc = true;

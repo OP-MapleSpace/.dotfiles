@@ -9,6 +9,7 @@
     ./hyprland
     ../shared/kdeconnect
     ../shared/kitty
+    ../shared/lf
     ./mako
     ../shared/nixvim
     ./obs-studio

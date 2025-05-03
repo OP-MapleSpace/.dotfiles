@@ -42,6 +42,7 @@
     discord-canary
     vesktop
     freetube
+    grayjay
     signal-desktop
 
     ## gaming!!!
@@ -53,11 +54,11 @@
     vitetris
 
     ## File Stuff
-    lf
     nnn
     superfile
     nemo-with-extensions
     udiskie
+    ncdu
     onlyoffice-bin
     libreoffice
     zathura
@@ -96,6 +97,8 @@
     cowsay
     cmatrix
     cbonsai
+    pipes
+    nbsdgames.out
     busybox
     ### utilities
     acpi
@@ -134,8 +137,8 @@
     virt-manager
     remmina
     qemu
-    protonvpn-gui
-    protonvpn-cli
+    #protonvpn-gui
+    #protonvpn-cli
 
     ## kde
     krita
@@ -161,7 +164,7 @@
 
     ## STEM
     gnome-calculator
-    #kicad
+    kicad
 
     ## audio
     reaper

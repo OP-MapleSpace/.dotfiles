@@ -6,7 +6,7 @@ in
 ''
 # See https://wiki.hyprland.org/Configuring/Monitors/
 monitor=${laptop_screen}, 2560x1440@165, 0x0, 1.25
-monitor=${ext_mon_hdmi}, 1920x1080@144, -1920x0, 1
+monitor=${ext_mon_hdmi}, 1920x1080@144, 2048x0, 1
 
 xwayland {
   force_zero_scaling = true
@@ -17,7 +17,7 @@ xwayland {
 # Execute your favorite apps and scripts at launch
 env = GDK_SCALE,1.25
 env = XCURSOR_SIZE,24
-exec = waybar
+exec-once = waybar
 exec-once = wl-paste --watch cliphist store
 exec-once = udiskie &
 exec-once = nm-applet
