@@ -10,7 +10,10 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -30,6 +33,7 @@
   outputs = { self, nixpkgs, home-manager, sddm-sugar-candy-nix, stylix, nixvim, nix-index-database, zen-browser, ... }@inputs:
     let
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
     in
     {
       nixosConfigurations = {
@@ -77,7 +81,7 @@
               home-manager = {
                 useUserPackages = true;
                 users.maplespace = import ../user-config/maplespace/home.nix;
-                extraSpecialArgs = {  inherit system nixpkgs home-manager zen-browser inputs; };
+                extraSpecialArgs = {  inherit nixpkgs home-manager zen-browser inputs; };
               };
             }
 
@@ -95,6 +99,16 @@
             ../system-config/MapleWorld/configuration.nix
             ../system-config/MapleWorld/hardware-configuration.nix
           ];
+        };
+      };
+      homeConfigurations = {
+        "kira" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+          modules = [
+            #stylix.homeModules.stylix
+            ../user-config/kira/home.nix
+          ];
+          extraSpecialArgs = {  inherit nixpkgs home-manager zen-browser inputs; };
         };
       };
     };

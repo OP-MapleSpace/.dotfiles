@@ -1,0 +1,31 @@
+/**
+ * @name Cyberpunk 2077
+ * @author Patryk Bielanin | bielak
+ * @description Cyberpunk 2077 UI styled theme for better discord
+ * @version 1.0.11
+ * @source https://github.com/PatrykBielanin/discord-cyberpunk2077-theme
+ * @website https://github.com/PatrykBielanin/discord-cyberpunk2077-theme
+ * @donate https://www.paypal.com/donate/?hosted_button_id=PGVKB863SXYUQ
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://patrykbielanin.github.io/discord-cyberpunk2077-theme/base.css');
+
+:root {
+    --background-primary: linear-gradient(180deg, rgba(0,0,45,.75) 10%, rgba(0,0,0,1) 65%); /* Background gradient */
+    --background-secondary: linear-gradient(180deg, rgba(0,0,69,.75) 10%, rgba(0,0,0,1) 65%); /* Background gradient */
+    --font-primary: 'Righteous'; /* Font */
+    --primary-text-color: #00ffff; /* Font color */
+
+    --primary: 0, 0, 0;  /* Background color mainly used for popups */
+    --red: 0, 140, 255; /* actually blue but too lazy to change theme properly lol */
+    --blue: 0, 140, 255; /* Use RGB values */
+    --yellow: 255, 255, 0; /* Use RGB values */
+    --green: 0, 255, 0; /* Use RGB values */
+    --dark-green: 56, 171, 111; /* Use RGB values */
+
+    --avatar-circle: 0; /* Square avatar */
+    --avatar-rounded: 5px; /* Square avatars */
+    --avatar-border: 1px solid var(--neon-red-color); /* Border of avatar */
+}
+
