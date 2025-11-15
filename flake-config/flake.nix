@@ -20,17 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
-    sddm-sugar-candy-nix = {
-      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
 
-  outputs = { self, nixpkgs, home-manager, sddm-sugar-candy-nix, stylix, nixvim, nix-index-database, zen-browser, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, stylix, nixvim, nix-index-database, zen-browser, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -57,11 +51,9 @@
 
             stylix.nixosModules.stylix
 
-            sddm-sugar-candy-nix.nixosModules.default
             {
               nixpkgs = {
                 overlays = [
-                  sddm-sugar-candy-nix.overlays.default
                 ];
               };
             }
@@ -85,19 +77,46 @@
               };
             }
 
+
             stylix.nixosModules.stylix
 
-            sddm-sugar-candy-nix.nixosModules.default
             {
               nixpkgs = {
                 overlays = [
-                  sddm-sugar-candy-nix.overlays.default
                 ];
               };
             }
 
             ../system-config/MapleWorld/configuration.nix
             ../system-config/MapleWorld/hardware-configuration.nix
+          ];
+        };
+        VoyageCeleste = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            nix-index-database.nixosModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useUserPackages = true;
+                users.maplespace = import ../user-config/maplespace/home.nix;
+                extraSpecialArgs = {  inherit nixpkgs home-manager zen-browser inputs; };
+              };
+            }
+
+            stylix.nixosModules.stylix
+
+            {
+              nixpkgs = {
+                overlays = [
+                ];
+              };
+            }
+
+            ../system-config/MapleWorld/configuration.nix
+            ../system-config/MapleWorld/hardware-iso.nix
           ];
         };
       };

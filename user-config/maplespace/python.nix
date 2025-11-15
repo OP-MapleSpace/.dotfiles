@@ -10,7 +10,7 @@ let
     pandas
     #CoolProp
     pyyaml
-    future
+    #future
     jupyter
     ipython
     pynvim

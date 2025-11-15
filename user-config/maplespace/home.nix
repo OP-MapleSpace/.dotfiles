@@ -13,10 +13,16 @@
     ./mako
     ../shared/nixvim
     ./obs-studio
+    ../shared/rofi
     ./starship
     ../shared/stylix.nix
+    ../shared/swayidle
+    ../shared/swaylock
     ../shared/syncthing
+    ../shared/vesktop
     ./waybar
+    ../shared/wlsunset
+    ./yazi
   ];
 
   programs.home-manager.enable = true;
@@ -55,12 +61,12 @@
       config.common.default = "*";
     };
     configFile = {
-      "hypr/hyprpaper.conf".source = ./hyprland/hyprpaper.conf;
+      #"hypr/hyprpaper.conf".source = ./hyprland/hyprpaper.conf;
       "hypr/hyprshade.toml".source = ./hyprland/hyprshade.toml;
-      "hypr/hypridle.conf".source = ./hyprland/hypridle.conf;
+      #"hypr/hypridle.conf".source = ./hyprland/hypridle.conf;
       "mov-cli/config.toml".source = ./mov-cli/config.toml;
       #"nvim/init.lua".source = ./neovim/init.lua;
-      "swaylock/config".source = ./swaylock/config;
+      #"swaylock/config".source = ./swaylock/config;
     };
   };
 

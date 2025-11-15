@@ -143,7 +143,7 @@
       # Start UI
       startup = {
         enable = true;
-        theme = "Startify";
+        settings.theme = "Startify";
       };
       noice.enable = true; # Funny command line things
 	  
@@ -154,14 +154,14 @@
 
     ## Extras ##
     # Tetris uwu
-    #extraPlugins = [(pkgs.vimUtils.buildVimPlugin {
-    #  name = "nvim-tetris";
-    #  src = pkgs.fetchFromGitHub {
-    #    owner = "alec-gibson";
-    #    repo = "nvim-tetris";
-    #    rev = "d17c99fb527ada98ffb0212ffc87ccda6fd4f7d9";
-    #    hash = "sha256-+69Fq5aMMzg9nV05rZxlLTFwQmDyN5/5HmuL2SGu9xQ=";
-    #  };
-    #})];
+    /*extraPlugins = [(pkgs.vimUtils.buildVimPlugin {
+      name = "tetris.nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "Leonardo-Luz";
+        repo = "tetris.nvim";
+      rev = "";
+        hash = "sha256-+69Fq5aMMzg9nV05rZxlLTFwQmDyN5/5HmuL2SGu9xQ=";
+      };
+    })];*/
   };
 }

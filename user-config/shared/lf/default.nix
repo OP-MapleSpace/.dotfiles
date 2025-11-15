@@ -33,6 +33,7 @@
       A = ":push %mkdir<space>";
       e = "\$$f";
       E = "!$f";
+      n = ":push %nvim<space>";
       U = "clear";
       S = "!du -sh"; # File Size
       x = "cut";
@@ -57,6 +58,7 @@
       gdf = "cd ~/.dotfiles";
       gdl = "cd ~/Downloads";
       gdc = "cd ~/Documents";
+      gf = "cd ~/.dotfiles/flake-config/";
       gm = "cd ~/Sync/Music";
       gp = "cd ~/Sync/Pictures";
       gS = "cd ~/Sync";

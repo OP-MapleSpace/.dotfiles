@@ -20,7 +20,7 @@ env = XCURSOR_SIZE,24
 exec-once = waybar
 exec-once = wl-paste --watch cliphist store
 exec-once = udiskie &
-exec-once = nm-applet
+exec-once = nm-applet && blueman-applet
 
 # Source a file (multi-file configs)
 # source = ~/.config/hypr/myColors.conf
@@ -107,10 +107,7 @@ master {
     new_on_top = true
 }
 
-gestures {
-    # See https://wiki.hyprland.org/Configuring/Variables/ for more
-    workspace_swipe = on
-}
+gesture = 3, horizontal, workspace
 
 misc {
     force_default_wallpaper = 0
@@ -126,7 +123,7 @@ misc {
 # Example windowrule v1
 # windowrule = float, ^(kitty)$
 
-windowrule = opacity 0.9 override 0.8 override,class:^(vesktop)$
+#windowrule = opacity 0.9 override 0.8 override,class:^(vesktop)$
 windowrule = opacity 0.9 override 0.8 override,class:^(discord)$
 
 # Example windowrule v2
@@ -155,21 +152,18 @@ bind = $altMod, C, exec, vesktop
 bind = ALT, period, exec, btop
 
 # rofi
-bind = $mainMod, R, exec, rofi -combi-modi window,drun,ssh -show run
-bind = $mainMod, Escape, exec, rofi -show power-menu -modi power-menu:rofi-power-menu
-bind = $mainMod, period, exec, rofimoji
-#bind = ALT, B, exec, rofi-bluetooth
-bindel = ALT, XF86Calculator, exec, rofi -show calc -modi calc:rofi-calc -no-show-match -no-sort
-bind = $altMod, R, exec, walker
+bind = $mainMod, R, exec, rofi -combi-modi drun,emoji,run -show combi
+bind = $mainMod, W, exec, rofi  -show window
 
 # Color picker
-bind = $ctrlMod, P, exec, hyprpicker -a
+bind = $ctrlMod, P, exec, wl-color-picker clipboard
+bind = $altMod, P, exec, wl-color-picker
 
 # Screenshot tool
-bind = $shMod, S, exec, hyprshade off && grim -g "$(slurp)" - | convert - -shave 1x1 PNG:- | swappy -f - # area capture
-bind = , PRINT, exec, hyprshade off && grim -t png ~/Sync/Pictures/Screenshots/$(date +'%s.png') # full window capture
-# Allowing Swappy to edit image from clipboard
-bind = $ctrlMod, S, exec, wl-paste | swappy -f -
+bind = $shMod, S, exec, grim -g "$(slurp)" - | magick - -shave 1x1 PNG:- | satty -f - # area capture
+bind = , PRINT, exec, grim -t png ~/Sync/Pictures/Screenshots/$(date +'%s.png') # full window capture
+# Allowing Satty to edit image from clipboard
+bind = $ctrlMod, S, exec, wl-paste | satty -f -
 
 # Using hardware keys
 bindel = , XF86MonBrightnessUp, exec, brightnessctl s +5%
@@ -207,10 +201,6 @@ bind = , mouse:272, movetoworkspace, +0
 bind = , mouse:272, submap, reset
 bind = , escape, togglespecialworkspace, minimized
 bind = , escape, submap, reset
-binde = , H, movefocus, l
-binde = , L, movefocus, r
-binde = , J, movefocus, u
-binde = , K, movefocus, d
 binde = , left, movefocus, l
 binde = , right, movefocus, r
 binde = , up, movefocus, u
@@ -219,10 +209,6 @@ submap = reset
 
 
 # Move focus with mainMod
-binde = $mainMod, H, movefocus, l
-binde = $mainMod, L, movefocus, r
-binde = $mainMod, J, movefocus, u
-binde = $mainMod, K, movefocus, d
 binde = $mainMod, left, movefocus, l
 binde = $mainMod, right, movefocus, r
 binde = $mainMod, up, movefocus, u
@@ -242,7 +228,7 @@ bind = , escape, submap, reset # reset to the global submap
 submap = reset
 
 # Lock
-binde = $ctrlMod, L, exec,systemctl suspend
+binde = $mainMod, L, exec,systemctl suspend
 
 # Switch workspaces
 bind = $mainMod, 1, workspace, 1
@@ -283,7 +269,7 @@ bindm = $mainMod, mouse:273, resizewindow
 # trigger when the switch is turning on (i.e., lid closes)
 #bindl=,switch:on:Lid Switch,exec,systemctl suspend
 # trigger when the switch is turning off (i.e., lid opens)
-bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "${laptop_screen}, 2560x1440, 0x0, 1.25" && hyprshade auto
+bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "${laptop_screen}, 2560x1440, 0x0, 1.25"
 
 # Distrobox
 exec-once = distrobox-assemble create --file ~/.dotfiles/user-config/maplespace/distrobox.ini --replace
@@ -295,9 +281,4 @@ windowrule = noanim,class:^(xwaylandvideobridge)$
 windowrule = noinitialfocus,class:^(xwaylandvideobridge)$
 windowrule = maxsize 1 1,class:^(xwaylandvideobridge)$
 windowrule = noblur,class:^(xwaylandvideobridge)$
-
-# Hyprland apps
-#exec-once = hyprpaper # Wallpaper
-exec = hyprshade auto # Shader; blue light filter
-exec-once = hypridle # Idle daemon
 ''

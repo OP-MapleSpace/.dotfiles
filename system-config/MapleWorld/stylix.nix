@@ -9,25 +9,15 @@
       followSystem = true;
     };
 
-    base16Scheme = {
-      base00 = "#000000"; # black | Default Background
-      base01 = "#000000"; # black | Lighter Background (Used for status bars, line number and folding marks)
-      base02 = "#2a3aff"; # selection blue | Selection Background
-      base03 = "#ff00ff"; # magenta | Comments, Invisibles, Line Highlighting
-      base04 = "#00ff00"; # lime | Dark Foreground (Used for status bars)
-      base05 = "#008cff"; # royal blue | Default Foreground, Caret, Delimiters, Operators
-      base06 = "#bbeeee"; # bee | Extra Light Color
-      base07 = "#eebbee"; # ebe (light pink) | Extra Light Color
-      base08 = "#ffff00"; # yellow | Variables, XML Tags, Markup Link Text, Markup Lists
-      base09 = "#ffaa00"; # orange | Integers, Boolean, Constants, XML Attributes, Markup Link Url
-      base0A = "#00ffb7"; # turquoise | Classes, Markup Bold, Search Text Background, Opening/Closing Embedded Language Tags
-      base0B = "#00ff00"; # lime | Strings, Inherited Class, Markup Code, Diff Inserted
-      base0C = "#00ffff"; # cyan | Support, Regular Expressions, Escape Characters, Markup Quotes
-      base0D = "#8c00ff"; # purple | Functions, Methods, Attribute IDs, Headings
-      base0E = "#ff44aa"; # light reddish pink | Keywords, Storage, Selector, Markup Italic, Diff Changed
-      base0F = "#ff0000"; # red | Deprecated, Diff Removed
+    #base16Scheme = ../../colorschemes/neon-blue.yaml;
+    image = ../../images/MapleEarthRiseBG.png;
+    override = {
+      base00 = "000000";
+      base08 = "ff00ff";
+      base09 = "ffff00";
+      base0A = "8c00ff";
+      base0B = "00ff00";
     };
-    image = ../../wallpaper/SpaceAce.png;
 
     fonts = {
       serif = {
@@ -43,7 +33,7 @@
       monospace = config.stylix.fonts.serif;
 
       emoji = {
-        package = pkgs.noto-fonts-emoji;
+        package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
 
@@ -62,7 +52,7 @@
     polarity = "dark";
     opacity.terminal = 0.8;
     targets = {
-      grub.useImage = true;
+      grub.useWallpaper = true;
       nixvim.transparentBackground.main = true;
     };
   };

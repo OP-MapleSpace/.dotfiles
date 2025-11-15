@@ -7,27 +7,17 @@
 
   home.packages = with pkgs; [
     ## hyprland/wayland stuff
-    hyprpaper
     hyprpicker
-    hyprshade
-    hypridle
-    hyprsunset
     hyprland-qtutils
-    #hyprland-protocols
     waybar
     eww
-    swaylock-effects
+    wlsunset
+    wl-color-picker
     wl-clipboard
-    kdePackages.xwaylandvideobridge
+    #kdePackages.xwaylandvideobridge
     grim
     slurp
-    swappy
-    rofi-wayland
-    rofi-calc
-    rofi-bluetooth
-    rofi-power-menu
-    rofimoji
-    walker
+    satty
 
     ## browsers
     brave
@@ -40,7 +30,7 @@
 
     ## Social Media
     discord-canary
-    vesktop
+    #vesktop
     freetube
     grayjay
     signal-desktop
@@ -50,8 +40,9 @@
     lutris
     space-cadet-pinball
     #bottles
-    ryujinx
+    ryubing
     vitetris
+    googleearth-pro
 
     ## File Stuff
     nnn
@@ -59,7 +50,7 @@
     nemo-with-extensions
     udiskie
     ncdu
-    onlyoffice-bin
+    onlyoffice-desktopeditors
     libreoffice
     zathura
     xournalpp
@@ -78,6 +69,7 @@
 
     ## terminal
     kitty
+    ghostty
     starship
     waveterm.out
     ### fish
@@ -128,6 +120,7 @@
     uwuify
     ventoy
     power-profiles-daemon
+    atuin
 
     ## VMs, VPNs, remote, syncing
     distrobox
@@ -137,6 +130,7 @@
     virt-manager
     remmina
     qemu
+    bitwarden-desktop
     #protonvpn-gui
     #protonvpn-cli
 
@@ -149,12 +143,12 @@
 
     ## programming
     gh
-    micromamba
+    #micromamba
     nodejs
     lua
     gfortran
     jq
-    julia
+    #julia
 
     ## media
     gimp
@@ -186,6 +180,12 @@
     "steam" "steam-run" "steam-original"
     "minecraft-launcher"
     "SpacePinballCadet"
+    "googleearth-pro"
+  ];
+
+  nixpkgs.config.allowInsecurePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "ventoy"
+    "googleearth-pro"
   ];
 
   /*  nixpkgs.overlays =

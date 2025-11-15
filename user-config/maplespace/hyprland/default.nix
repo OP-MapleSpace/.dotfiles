@@ -6,6 +6,6 @@
     xwayland = {
       enable = true;
     };
-    systemd.enable = false;
+    #systemd.enable = false;
   };
 }

@@ -3,7 +3,7 @@
   programs.starship.enableFishIntegration = true;
   programs.starship.settings = {
     add_newline = false;
-    format = "$username[@](${config.lib.stylix.colors.withHashtag.base0D})$hostname [visiting](${config.lib.stylix.colors.withHashtag.base0B}) $directory $all $line_break[$status](bold)$character ";
+    format = "$username[@](#8c00ff)$hostname [visiting](#00ff00) $directory $all $line_break[$status](bold)$character ";
     right_format = "$cmd_duration";
 
     battery = {
@@ -11,28 +11,28 @@
       display = [
         {
           threshold = 20;
-          style = "bold ${config.lib.stylix.colors.withHashtag.base0F}";
+          style = "bold #ff0000";
           discharging_symbol = " ";
           charging_symbol = "⚡️ ";
         }
 
         {
           threshold = 30;
-          style = "bold ${config.lib.stylix.colors.withHashtag.base08}";
+          style = "#ffff00";
           discharging_symbol = "  ";
           charging_symbol = "⚡️ ";
         }
 
         {
           threshold = 80;
-          style = "bold ${config.lib.stylix.colors.withHashtag.base0F}";
+          style = "bold #008cff";
           discharging_symbol = "  ";
           charging_symbol = "⚡️ ";
         }
 
         {
           threshold = 100;
-          style = "bold ${config.lib.stylix.colors.withHashtag.base0F}";
+          style = "bold #00ff00";
           discharging_symbol = "  ";
           charging_symbol = "⚡️ ";
         }
@@ -40,10 +40,8 @@
     };
 
     character = {
-      # success_symbol = "[>\]\)====>](bold green)";
-      success_symbol = "[bee status: :\\)](bold ${config.lib.stylix.colors.withHashtag.base08})";
-      # error_symbol = "[XXXXXXX](bold red)";
-      error_symbol = "[bee status: :\\(](bold ${config.lib.stylix.colors.withHashtag.base0F})";
+      success_symbol = "[bee status: :\\)](bold #ffff00)";
+      error_symbol = "[bee status: :\\(](bold #ff0000)";
     };
 
     cmd_duration = {
@@ -55,14 +53,14 @@
     hostname = {
       ssh_only = false;
       disabled = false;
-      style = "bold ${config.lib.stylix.colors.withHashtag.base03}";
+      style = "bold #ff00ff";
       format = "[$ssh_symbol$hostname]($style)";
     };
 
     username = {
       show_always = true;
-      style_root = "bold ${config.lib.stylix.colors.withHashtag.base07}";
-      style_user = "bold ${config.lib.stylix.colors.withHashtag.base05}";
+      style_root = "bold #0000ff";
+      style_user = "bold #008cff";
       format = "[$user]($style)";
     };
 
@@ -71,7 +69,7 @@
       threshold = -1;
       symbol = " ";
       format = "[$symbol $ram_pct]($style) ";
-      style = "bold ${config.lib.stylix.colors.withHashtag.base0C}";
+      style = "bold ${config.lib.stylix.colors.withHashtag.base0B}";
     };
 
     shell = {
